@@ -10,6 +10,9 @@
 		2F22D0BE25760E3800F10E0E /* Feuerlib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F22D0B425760E3700F10E0E /* Feuerlib.framework */; };
 		2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D225760FDE00F10E0E /* ImageCache.swift */; };
 		2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D62576118F00F10E0E /* ServiceError.swift */; };
+		2FFADEAA25762D4900AC906C /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEA925762D4900AC906C /* Double.swift */; };
+		2FFADEAE25762D9400AC906C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEAD25762D9400AC906C /* Collection.swift */; };
+		2FFADEB225762DB000AC906C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEB125762DB000AC906C /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		2F22D0C425760E3800F10E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F22D0D225760FDE00F10E0E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2F22D0D62576118F00F10E0E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		2FFADEA925762D4900AC906C /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		2FFADEAD25762D9400AC906C /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		2FFADEB125762DB000AC906C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,9 @@
 				2F22D0B825760E3700F10E0E /* Info.plist */,
 				2F22D0D225760FDE00F10E0E /* ImageCache.swift */,
 				2F22D0D62576118F00F10E0E /* ServiceError.swift */,
+				2FFADEA925762D4900AC906C /* Double.swift */,
+				2FFADEAD25762D9400AC906C /* Collection.swift */,
+				2FFADEB125762DB000AC906C /* UIColor.swift */,
 			);
 			path = feuerlib;
 			sourceTree = "<group>";
@@ -195,7 +204,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */,
+				2FFADEAA25762D4900AC906C /* Double.swift in Sources */,
 				2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */,
+				2FFADEAE25762D9400AC906C /* Collection.swift in Sources */,
+				2FFADEB225762DB000AC906C /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

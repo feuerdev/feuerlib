@@ -7,8 +7,14 @@
 
 import UIKit
 
+/**
+ ImageCache that lets you download an UIImage by url string and cache it in NSCache
+ */
 public class ImageCache {
     
+    /**
+     Singleton
+     */
     public static let shared = ImageCache()
     
     private let cache = NSCache<NSString, UIImage>()
