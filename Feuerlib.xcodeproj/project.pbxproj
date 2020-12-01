@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F22D0BE25760E3800F10E0E /* feuerlib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F22D0B425760E3700F10E0E /* feuerlib.framework */; };
+		2F22D0BE25760E3800F10E0E /* Feuerlib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F22D0B425760E3700F10E0E /* Feuerlib.framework */; };
 		2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D225760FDE00F10E0E /* ImageCache.swift */; };
 		2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D62576118F00F10E0E /* ServiceError.swift */; };
 /* End PBXBuildFile section */
@@ -23,9 +23,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F22D0B425760E3700F10E0E /* feuerlib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = feuerlib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F22D0B425760E3700F10E0E /* Feuerlib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Feuerlib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F22D0B825760E3700F10E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2F22D0BD25760E3800F10E0E /* feuerlibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = feuerlibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F22D0BD25760E3800F10E0E /* FeuerlibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeuerlibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F22D0C425760E3800F10E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F22D0D225760FDE00F10E0E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2F22D0D62576118F00F10E0E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F22D0BE25760E3800F10E0E /* feuerlib.framework in Frameworks */,
+				2F22D0BE25760E3800F10E0E /* Feuerlib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +62,8 @@
 		2F22D0B525760E3700F10E0E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2F22D0B425760E3700F10E0E /* feuerlib.framework */,
-				2F22D0BD25760E3800F10E0E /* feuerlibTests.xctest */,
+				2F22D0B425760E3700F10E0E /* Feuerlib.framework */,
+				2F22D0BD25760E3800F10E0E /* FeuerlibTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,9 +99,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2F22D0B325760E3700F10E0E /* feuerlib */ = {
+		2F22D0B325760E3700F10E0E /* Feuerlib */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2F22D0C825760E3800F10E0E /* Build configuration list for PBXNativeTarget "feuerlib" */;
+			buildConfigurationList = 2F22D0C825760E3800F10E0E /* Build configuration list for PBXNativeTarget "Feuerlib" */;
 			buildPhases = (
 				2F22D0AF25760E3700F10E0E /* Headers */,
 				2F22D0B025760E3700F10E0E /* Sources */,
@@ -112,14 +112,14 @@
 			);
 			dependencies = (
 			);
-			name = feuerlib;
+			name = Feuerlib;
 			productName = feuerlib;
-			productReference = 2F22D0B425760E3700F10E0E /* feuerlib.framework */;
+			productReference = 2F22D0B425760E3700F10E0E /* Feuerlib.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		2F22D0BC25760E3800F10E0E /* feuerlibTests */ = {
+		2F22D0BC25760E3800F10E0E /* FeuerlibTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2F22D0CB25760E3800F10E0E /* Build configuration list for PBXNativeTarget "feuerlibTests" */;
+			buildConfigurationList = 2F22D0CB25760E3800F10E0E /* Build configuration list for PBXNativeTarget "FeuerlibTests" */;
 			buildPhases = (
 				2F22D0B925760E3800F10E0E /* Sources */,
 				2F22D0BA25760E3800F10E0E /* Frameworks */,
@@ -130,9 +130,9 @@
 			dependencies = (
 				2F22D0C025760E3800F10E0E /* PBXTargetDependency */,
 			);
-			name = feuerlibTests;
+			name = FeuerlibTests;
 			productName = feuerlibTests;
-			productReference = 2F22D0BD25760E3800F10E0E /* feuerlibTests.xctest */;
+			productReference = 2F22D0BD25760E3800F10E0E /* FeuerlibTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -153,7 +153,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2F22D0AE25760E3700F10E0E /* Build configuration list for PBXProject "feuerlib" */;
+			buildConfigurationList = 2F22D0AE25760E3700F10E0E /* Build configuration list for PBXProject "Feuerlib" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -166,8 +166,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2F22D0B325760E3700F10E0E /* feuerlib */,
-				2F22D0BC25760E3800F10E0E /* feuerlibTests */,
+				2F22D0B325760E3700F10E0E /* Feuerlib */,
+				2F22D0BC25760E3800F10E0E /* FeuerlibTests */,
 			);
 		};
 /* End PBXProject section */
@@ -211,7 +211,7 @@
 /* Begin PBXTargetDependency section */
 		2F22D0C025760E3800F10E0E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2F22D0B325760E3700F10E0E /* feuerlib */;
+			target = 2F22D0B325760E3700F10E0E /* Feuerlib */;
 			targetProxy = 2F22D0BF25760E3800F10E0E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -433,7 +433,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2F22D0AE25760E3700F10E0E /* Build configuration list for PBXProject "feuerlib" */ = {
+		2F22D0AE25760E3700F10E0E /* Build configuration list for PBXProject "Feuerlib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2F22D0C625760E3800F10E0E /* Debug */,
@@ -442,7 +442,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2F22D0C825760E3800F10E0E /* Build configuration list for PBXNativeTarget "feuerlib" */ = {
+		2F22D0C825760E3800F10E0E /* Build configuration list for PBXNativeTarget "Feuerlib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2F22D0C925760E3800F10E0E /* Debug */,
@@ -451,7 +451,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2F22D0CB25760E3800F10E0E /* Build configuration list for PBXNativeTarget "feuerlibTests" */ = {
+		2F22D0CB25760E3800F10E0E /* Build configuration list for PBXNativeTarget "FeuerlibTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2F22D0CC25760E3800F10E0E /* Debug */,
