@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2F22D0BE25760E3800F10E0E /* feuerlib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F22D0B425760E3700F10E0E /* feuerlib.framework */; };
-		2F22D0C325760E3800F10E0E /* feuerlibTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0C225760E3800F10E0E /* feuerlibTests.swift */; };
-		2F22D0C525760E3800F10E0E /* feuerlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F22D0B725760E3700F10E0E /* feuerlib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D225760FDE00F10E0E /* ImageCache.swift */; };
+		2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D62576118F00F10E0E /* ServiceError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +24,11 @@
 
 /* Begin PBXFileReference section */
 		2F22D0B425760E3700F10E0E /* feuerlib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = feuerlib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F22D0B725760E3700F10E0E /* feuerlib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = feuerlib.h; sourceTree = "<group>"; };
 		2F22D0B825760E3700F10E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F22D0BD25760E3800F10E0E /* feuerlibTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = feuerlibTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2F22D0C225760E3800F10E0E /* feuerlibTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = feuerlibTests.swift; sourceTree = "<group>"; };
 		2F22D0C425760E3800F10E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F22D0D225760FDE00F10E0E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		2F22D0D62576118F00F10E0E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +71,9 @@
 		2F22D0B625760E3700F10E0E /* feuerlib */ = {
 			isa = PBXGroup;
 			children = (
-				2F22D0B725760E3700F10E0E /* feuerlib.h */,
 				2F22D0B825760E3700F10E0E /* Info.plist */,
+				2F22D0D225760FDE00F10E0E /* ImageCache.swift */,
+				2F22D0D62576118F00F10E0E /* ServiceError.swift */,
 			);
 			path = feuerlib;
 			sourceTree = "<group>";
@@ -80,7 +81,6 @@
 		2F22D0C125760E3800F10E0E /* feuerlibTests */ = {
 			isa = PBXGroup;
 			children = (
-				2F22D0C225760E3800F10E0E /* feuerlibTests.swift */,
 				2F22D0C425760E3800F10E0E /* Info.plist */,
 			);
 			path = feuerlibTests;
@@ -93,7 +93,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F22D0C525760E3800F10E0E /* feuerlib.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +146,7 @@
 				TargetAttributes = {
 					2F22D0B325760E3700F10E0E = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1220;
 					};
 					2F22D0BC25760E3800F10E0E = {
 						CreatedOnToolsVersion = 12.2;
@@ -194,6 +194,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */,
+				2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +203,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F22D0C325760E3800F10E0E /* feuerlibTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +342,7 @@
 		2F22D0C925760E3800F10E0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LQDASF64MT;
@@ -349,6 +351,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = feuerlib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,6 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.feuer.feuerlib;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +369,7 @@
 		2F22D0CA25760E3800F10E0E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = LQDASF64MT;
@@ -373,6 +378,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = feuerlib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -389,6 +395,7 @@
 		2F22D0CC25760E3800F10E0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQDASF64MT;
 				INFOPLIST_FILE = feuerlibTests/Info.plist;
@@ -407,6 +414,7 @@
 		2F22D0CD25760E3800F10E0E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LQDASF64MT;
 				INFOPLIST_FILE = feuerlibTests/Info.plist;
