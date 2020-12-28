@@ -10,6 +10,9 @@
 		2F22D0BE25760E3800F10E0E /* Feuerlib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F22D0B425760E3700F10E0E /* Feuerlib.framework */; };
 		2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D225760FDE00F10E0E /* ImageCache.swift */; };
 		2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D62576118F00F10E0E /* ServiceError.swift */; };
+		2FC18CF22597A612002BEBD3 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC18CF12597A612002BEBD3 /* General.swift */; };
+		2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B76B2599E5170096862A /* UISearchBar.swift */; };
+		2FC8B7762599F9A50096862A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B7752599F9A50096862A /* UIViewController.swift */; };
 		2FFADEAA25762D4900AC906C /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEA925762D4900AC906C /* Double.swift */; };
 		2FFADEAE25762D9400AC906C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEAD25762D9400AC906C /* Collection.swift */; };
 		2FFADEB225762DB000AC906C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEB125762DB000AC906C /* UIColor.swift */; };
@@ -32,6 +35,9 @@
 		2F22D0C425760E3800F10E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F22D0D225760FDE00F10E0E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2F22D0D62576118F00F10E0E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		2FC18CF12597A612002BEBD3 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		2FC8B76B2599E5170096862A /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
+		2FC8B7752599F9A50096862A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2FFADEA925762D4900AC906C /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		2FFADEAD25762D9400AC906C /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		2FFADEB125762DB000AC906C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -83,6 +89,9 @@
 				2FFADEA925762D4900AC906C /* Double.swift */,
 				2FFADEAD25762D9400AC906C /* Collection.swift */,
 				2FFADEB125762DB000AC906C /* UIColor.swift */,
+				2FC18CF12597A612002BEBD3 /* General.swift */,
+				2FC8B76B2599E5170096862A /* UISearchBar.swift */,
+				2FC8B7752599F9A50096862A /* UIViewController.swift */,
 			);
 			path = feuerlib;
 			sourceTree = "<group>";
@@ -151,7 +160,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					2F22D0B325760E3700F10E0E = {
 						CreatedOnToolsVersion = 12.2;
@@ -203,10 +212,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FC18CF22597A612002BEBD3 /* General.swift in Sources */,
 				2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */,
 				2FFADEAA25762D4900AC906C /* Double.swift in Sources */,
 				2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */,
 				2FFADEAE25762D9400AC906C /* Collection.swift in Sources */,
+				2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */,
+				2FC8B7762599F9A50096862A /* UIViewController.swift in Sources */,
 				2FFADEB225762DB000AC906C /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,7 +293,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -339,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
