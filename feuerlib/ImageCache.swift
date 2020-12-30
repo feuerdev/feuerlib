@@ -19,17 +19,17 @@ public class ImageCache {
     
     private let cache = NSCache<NSString, UIImage>()
     
-    public func getImage(from urlString:String, completionHandler: @escaping(Result<(cacheKey:String, image:UIImage), Error>) -> Void) {
-        let cacheKey = NSString(string: urlString)
+    public func getImage(from urlString:String, completionHandler: @escaping (CachableResult<String, UIImage, Error>) -> Void) {
+        let cacheKey = urlString
         
-        if let image = cache.object(forKey: cacheKey) {
-            completionHandler(.success((String(cacheKey), image)))
+        if let image = cache.object(forKey: NSString(string: cacheKey)) {
+            completionHandler(CachableResult(.success(image), cacheKey))
             return
         }
 
         
         guard let url = URL(string: urlString) else {
-            completionHandler(.failure(ServiceError.badUrl))
+            completionHandler(CachableResult(.failure(ServiceError.badUrl), cacheKey))
             return
         }
         
@@ -38,13 +38,12 @@ public class ImageCache {
                   let response = response as? HTTPURLResponse, response.statusCode == 200,
                   let data = data,
                   let image = UIImage(data: data) else {
-                completionHandler(.failure(ServiceError.noData))
+                completionHandler(CachableResult(.failure(ServiceError.noData), cacheKey))
                 return
             }
             
-            self.cache.setObject(image, forKey: cacheKey)
-            
-            completionHandler(.success((String(cacheKey), image)))
+            self.cache.setObject(image, forKey: NSString(string: cacheKey))
+            completionHandler(CachableResult(.success(image), cacheKey))
         }.resume()
     }
 }
