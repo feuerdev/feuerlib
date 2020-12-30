@@ -6,8 +6,10 @@
 	<dict>
 		<key>Feuerlib.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>6</integer>
 		</dict>
 		<key>Pic Joust Share.xcscheme_^#shared#^_</key>
 		<dict>
@@ -18,6 +20,19 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2F22D0B325760E3700F10E0E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2F22D0BC25760E3800F10E0E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
