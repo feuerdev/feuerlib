@@ -10,6 +10,7 @@
 		2F22D0BE25760E3800F10E0E /* Feuerlib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F22D0B425760E3700F10E0E /* Feuerlib.framework */; };
 		2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D225760FDE00F10E0E /* ImageCache.swift */; };
 		2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D62576118F00F10E0E /* ServiceError.swift */; };
+		2F42ED6625A994E100136F90 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F42ED6525A994E100136F90 /* UITableView.swift */; };
 		2F84023F259C9666006C12B0 /* CachableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84023E259C9666006C12B0 /* CachableResult.swift */; };
 		2FC18CF22597A612002BEBD3 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC18CF12597A612002BEBD3 /* General.swift */; };
 		2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B76B2599E5170096862A /* UISearchBar.swift */; };
@@ -36,6 +37,7 @@
 		2F22D0C425760E3800F10E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F22D0D225760FDE00F10E0E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2F22D0D62576118F00F10E0E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		2F42ED6525A994E100136F90 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		2F84023E259C9666006C12B0 /* CachableResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachableResult.swift; sourceTree = "<group>"; };
 		2FC18CF12597A612002BEBD3 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		2FC8B76B2599E5170096862A /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				2FC8B76B2599E5170096862A /* UISearchBar.swift */,
 				2FC8B7752599F9A50096862A /* UIViewController.swift */,
 				2F84023E259C9666006C12B0 /* CachableResult.swift */,
+				2F42ED6525A994E100136F90 /* UITableView.swift */,
 			);
 			path = feuerlib;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */,
 				2FFADEAE25762D9400AC906C /* Collection.swift in Sources */,
 				2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */,
+				2F42ED6625A994E100136F90 /* UITableView.swift in Sources */,
 				2FC8B7762599F9A50096862A /* UIViewController.swift in Sources */,
 				2FFADEB225762DB000AC906C /* UIColor.swift in Sources */,
 			);
