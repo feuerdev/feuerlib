@@ -62,4 +62,16 @@ class TournamentTreeTests: XCTestCase {
         XCTAssertEqual(count, 15)
     }
     
+    func testNextOpenMatchReturnsNilIfNoMatch() {
+        let sut = TournamentTree([])
+        XCTAssertNil(sut.nextOpenMatch())
+    }
+    
+    func testNextOpenMatchReturnsNextUndecidedMatch() {
+        let sut = TournamentTree(Array(1...3))
+        XCTAssertEqual(sut.nextOpenMatch()!.left!.winner, 1)
+        sut.finals.left?.winner = 1
+        XCTAssertEqual(sut.nextOpenMatch()!.right!.winner, 2)
+        
+    }
 }

@@ -36,19 +36,32 @@ class TournamentTree<T> {
         self.competitors = competitors
         self.finals = Node()
         
-        let count = competitors.count
-        
-        guard count > 0 else {
-            return
-        }
-        
         build(finals, rounds: self.rounds())
         populate(finals, competitors)
         resolveByes(finals)
     }
     
     func rounds() -> Int {
+        guard competitors.count > 0 else {
+            return 0
+        }
+        
         return Int(ceil(log2(Double(competitors.count))))
+    }
+    
+    func nextOpenMatch() -> Node<T>? {
+        var found = false
+        var result: Node<T>? = nil
+        traverseBottomUpBreadth { (node) in
+            if !found,
+               node.left?.winner != nil,
+               node.right?.winner != nil,
+               node.winner == nil {
+                result = node
+                found = true
+            }
+        }
+        return result
     }
     
     func traverse(_ node:Node<T>, perNode: ((Node<T>) -> Void)) {
@@ -127,7 +140,7 @@ class TournamentTree<T> {
         traverseBottomUpBreadth { (node) in
             if index < Int(leafs) {
                 if index % 2 == 0 {
-                    node.winner = competitors[evenIndex]
+                    node.winner = competitors[safe: evenIndex]
                     evenIndex += 1
                 } else {
                     
