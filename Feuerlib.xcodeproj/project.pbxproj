@@ -11,7 +11,12 @@
 		2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D225760FDE00F10E0E /* ImageCache.swift */; };
 		2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D62576118F00F10E0E /* ServiceError.swift */; };
 		2F42ED6625A994E100136F90 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F42ED6525A994E100136F90 /* UITableView.swift */; };
+		2F7DDB3325B43962008F7C71 /* TournamentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB3225B43962008F7C71 /* TournamentTree.swift */; };
+		2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB3225B43962008F7C71 /* TournamentTree.swift */; };
+		2F7DDB5A25B43B18008F7C71 /* BinaryTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB5925B43B18008F7C71 /* BinaryTreeTests.swift */; };
 		2F84023F259C9666006C12B0 /* CachableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84023E259C9666006C12B0 /* CachableResult.swift */; };
+		2F871B5C25AD854A004BA869 /* UIDocumentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F871B5B25AD854A004BA869 /* UIDocumentImageView.swift */; };
+		2F871B6B25ADC7E6004BA869 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F871B6A25ADC7E6004BA869 /* UIView.swift */; };
 		2FC18CF22597A612002BEBD3 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC18CF12597A612002BEBD3 /* General.swift */; };
 		2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B76B2599E5170096862A /* UISearchBar.swift */; };
 		2FC8B7762599F9A50096862A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B7752599F9A50096862A /* UIViewController.swift */; };
@@ -38,7 +43,11 @@
 		2F22D0D225760FDE00F10E0E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2F22D0D62576118F00F10E0E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		2F42ED6525A994E100136F90 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		2F7DDB3225B43962008F7C71 /* TournamentTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTree.swift; sourceTree = "<group>"; };
+		2F7DDB5925B43B18008F7C71 /* BinaryTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreeTests.swift; sourceTree = "<group>"; };
 		2F84023E259C9666006C12B0 /* CachableResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachableResult.swift; sourceTree = "<group>"; };
+		2F871B5B25AD854A004BA869 /* UIDocumentImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDocumentImageView.swift; sourceTree = "<group>"; };
+		2F871B6A25ADC7E6004BA869 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		2FC18CF12597A612002BEBD3 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		2FC8B76B2599E5170096862A /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
 		2FC8B7752599F9A50096862A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -87,17 +96,14 @@
 		2F22D0B625760E3700F10E0E /* feuerlib */ = {
 			isa = PBXGroup;
 			children = (
+				2F7DDB2F25B43940008F7C71 /* Extensions */,
 				2F22D0B825760E3700F10E0E /* Info.plist */,
 				2F22D0D225760FDE00F10E0E /* ImageCache.swift */,
 				2F22D0D62576118F00F10E0E /* ServiceError.swift */,
-				2FFADEA925762D4900AC906C /* Double.swift */,
-				2FFADEAD25762D9400AC906C /* Collection.swift */,
-				2FFADEB125762DB000AC906C /* UIColor.swift */,
 				2FC18CF12597A612002BEBD3 /* General.swift */,
-				2FC8B76B2599E5170096862A /* UISearchBar.swift */,
-				2FC8B7752599F9A50096862A /* UIViewController.swift */,
 				2F84023E259C9666006C12B0 /* CachableResult.swift */,
-				2F42ED6525A994E100136F90 /* UITableView.swift */,
+				2F871B5B25AD854A004BA869 /* UIDocumentImageView.swift */,
+				2F7DDB3225B43962008F7C71 /* TournamentTree.swift */,
 			);
 			path = feuerlib;
 			sourceTree = "<group>";
@@ -106,8 +112,23 @@
 			isa = PBXGroup;
 			children = (
 				2F22D0C425760E3800F10E0E /* Info.plist */,
+				2F7DDB5925B43B18008F7C71 /* BinaryTreeTests.swift */,
 			);
 			path = feuerlibTests;
+			sourceTree = "<group>";
+		};
+		2F7DDB2F25B43940008F7C71 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2FFADEA925762D4900AC906C /* Double.swift */,
+				2FFADEAD25762D9400AC906C /* Collection.swift */,
+				2FFADEB125762DB000AC906C /* UIColor.swift */,
+				2FC8B76B2599E5170096862A /* UISearchBar.swift */,
+				2FC8B7752599F9A50096862A /* UIViewController.swift */,
+				2F42ED6525A994E100136F90 /* UITableView.swift */,
+				2F871B6A25ADC7E6004BA869 /* UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,9 +243,12 @@
 				2F84023F259C9666006C12B0 /* CachableResult.swift in Sources */,
 				2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */,
 				2FFADEAA25762D4900AC906C /* Double.swift in Sources */,
+				2F871B6B25ADC7E6004BA869 /* UIView.swift in Sources */,
 				2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */,
+				2F871B5C25AD854A004BA869 /* UIDocumentImageView.swift in Sources */,
 				2FFADEAE25762D9400AC906C /* Collection.swift in Sources */,
 				2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */,
+				2F7DDB3325B43962008F7C71 /* TournamentTree.swift in Sources */,
 				2F42ED6625A994E100136F90 /* UITableView.swift in Sources */,
 				2FC8B7762599F9A50096862A /* UIViewController.swift in Sources */,
 				2FFADEB225762DB000AC906C /* UIColor.swift in Sources */,
@@ -235,6 +259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F7DDB5A25B43B18008F7C71 /* BinaryTreeTests.swift in Sources */,
+				2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +410,7 @@
 				INFOPLIST_FILE = feuerlib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,6 +438,7 @@
 				INFOPLIST_FILE = feuerlib/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -436,6 +464,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.feuer.feuerlibTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -455,6 +484,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.feuer.feuerlibTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
