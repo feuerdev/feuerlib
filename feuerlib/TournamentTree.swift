@@ -16,13 +16,25 @@ class Node<T> {
         self.init()
         self.winner = value
     }
+    
+    func depth() -> Int {
+        if left == nil && right == nil {
+            return 0
+        } else {
+            let lDepth = (left?.depth() ?? 0) + 1
+            let rDepth = (right?.depth() ?? 0) + 1
+            return max(lDepth, rDepth)
+        }
+    }
 }
 
 class TournamentTree<T> {
     var finals: Node<T>
+    var competitors: [T]
     
     init(_ competitors:[T]) {
-        finals = Node()
+        self.competitors = competitors
+        self.finals = Node()
         
         let count = competitors.count
         
@@ -30,29 +42,57 @@ class TournamentTree<T> {
             return
         }
         
-        let rounds = Int(ceil(log2(Double(count))))
-        
-        build(finals, rounds: rounds)
+        build(finals, rounds: self.rounds())
         populate(finals, competitors)
         resolveByes(finals)
     }
     
-    private func traverse(_ node:Node<T>, perNode: ((Node<T>) -> Void)) {
-        
+    func rounds() -> Int {
+        return Int(ceil(log2(Double(competitors.count))))
+    }
+    
+    func traverse(_ node:Node<T>, perNode: ((Node<T>) -> Void)) {
         perNode(node)
-        
         if let left = node.left {
             traverse(left, perNode: perNode)
         }
         if let right = node.right {
             traverse(right, perNode: perNode)
         }
-        
-        
     }
     
-    private func resolveByes(_ node:Node<T>) {
-        traverse(node) { (node) in
+    func traverseBottomUpBreadth(levels:Int, perNode: ((Node<T>) -> Void)) {
+        var result = [Node<T>]();
+
+        var q = [finals]
+        while !q.isEmpty {
+            var nodes = [Node<T>]();
+            for n in q {
+                nodes.append(q.removeFirst())
+                if let left = n.left {
+                    q.append(left)
+                }
+                if let right = n.right {
+                    q.append(right)
+                }
+            }
+            result.append(contentsOf: nodes.reversed())
+        }
+        
+
+        for n in result.reversed() {
+            if n.depth() <= levels {
+                perNode(n)
+            }
+        }
+    }
+    
+    func traverseBottomUpBreadth(perNode: ((Node<T>) -> Void)) {
+        traverseBottomUpBreadth(levels: self.rounds(), perNode: perNode)
+    }
+    
+    func resolveByes(_ node:Node<T>) {
+        traverseBottomUpBreadth(levels: 1) { (node) in
             let leftWinner = node.left?.winner
             let rightWinner = node.right?.winner
             
@@ -80,33 +120,22 @@ class TournamentTree<T> {
      Populates a Tournament tree breadth first and bottom up
      */
     private func populate(_ tree:Node<T>, _ competitors:[T]) {
-        for comp in competitors {
-            insert(tree, comp)
-        }
-    }
-    
-    /**
-     Inserts a nodeat the bottom and left most possible spot
-     */
-    @discardableResult private func insert(_ node:Node<T>, _ competitor:T) -> Bool {
-        
-        if
-            node.left == nil,
-            node.right == nil,
-            node.winner == nil {
-            node.winner = competitor
-            return true
-        }
-        
-        if let left = node.left, let right = node.right {
-            if insert(left, competitor) {
-                return true
+        var index = 0
+        var evenIndex = 0
+        var oddIndex = 0
+        let leafs = pow(2.0, Double(self.rounds()))
+        traverseBottomUpBreadth { (node) in
+            if index < Int(leafs) {
+                if index % 2 == 0 {
+                    node.winner = competitors[evenIndex]
+                    evenIndex += 1
+                } else {
+                    
+                    node.winner = competitors[safe: Int(leafs/2)+oddIndex]
+                    oddIndex += 1
+                }
             }
-            
-            if insert(right, competitor) {
-                return true
-            }
+            index += 1
         }
-        return false
     }
 }

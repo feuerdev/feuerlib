@@ -45,7 +45,21 @@ class TournamentTreeTests: XCTestCase {
     
     func testCreateTournamentWithThreeCompetitorsThirdCompetitorInstantlyWinsHisBye() {
         let sut = TournamentTree([0,1,2])
-        XCTAssertEqual(sut.finals.right?.winner, 2)
+        XCTAssertEqual(sut.finals.right?.winner, 1)
     }
-
+    
+    func testTraversals() {
+        let sut = TournamentTree(Array(1...8))
+        var count = 0
+        var items = [Int]()
+        sut.traverseBottomUpBreadth { (node) in
+            count += 1
+            if let comp = node.winner {
+                items.append(comp)
+            }
+        }
+        XCTAssertEqual(items, [1,5,2,6,3,7,4,8])
+        XCTAssertEqual(count, 15)
+    }
+    
 }
