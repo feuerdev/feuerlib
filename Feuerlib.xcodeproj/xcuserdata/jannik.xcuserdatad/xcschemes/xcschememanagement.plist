@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Feuerlib.xcscheme_^#shared#^_</key>
+		<key>Feuerlib.xcscheme</key>
 		<dict>
 			<key>isShown</key>
-			<false/>
+			<true/>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Pic Joust Share.xcscheme_^#shared#^_</key>
 		<dict>
