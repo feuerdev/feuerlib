@@ -13,7 +13,7 @@
 		2F42ED6625A994E100136F90 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F42ED6525A994E100136F90 /* UITableView.swift */; };
 		2F7DDB3325B43962008F7C71 /* TournamentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB3225B43962008F7C71 /* TournamentTree.swift */; };
 		2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB3225B43962008F7C71 /* TournamentTree.swift */; };
-		2F7DDB5A25B43B18008F7C71 /* BinaryTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB5925B43B18008F7C71 /* BinaryTreeTests.swift */; };
+		2F7DDB5A25B43B18008F7C71 /* TournamentTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB5925B43B18008F7C71 /* TournamentTreeTests.swift */; };
 		2F84023F259C9666006C12B0 /* CachableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84023E259C9666006C12B0 /* CachableResult.swift */; };
 		2F871B5C25AD854A004BA869 /* UIDocumentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F871B5B25AD854A004BA869 /* UIDocumentImageView.swift */; };
 		2F871B6B25ADC7E6004BA869 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F871B6A25ADC7E6004BA869 /* UIView.swift */; };
@@ -44,7 +44,7 @@
 		2F22D0D62576118F00F10E0E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		2F42ED6525A994E100136F90 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		2F7DDB3225B43962008F7C71 /* TournamentTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTree.swift; sourceTree = "<group>"; };
-		2F7DDB5925B43B18008F7C71 /* BinaryTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreeTests.swift; sourceTree = "<group>"; };
+		2F7DDB5925B43B18008F7C71 /* TournamentTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTreeTests.swift; sourceTree = "<group>"; };
 		2F84023E259C9666006C12B0 /* CachableResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachableResult.swift; sourceTree = "<group>"; };
 		2F871B5B25AD854A004BA869 /* UIDocumentImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDocumentImageView.swift; sourceTree = "<group>"; };
 		2F871B6A25ADC7E6004BA869 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				2F22D0C425760E3800F10E0E /* Info.plist */,
-				2F7DDB5925B43B18008F7C71 /* BinaryTreeTests.swift */,
+				2F7DDB5925B43B18008F7C71 /* TournamentTreeTests.swift */,
 			);
 			path = feuerlibTests;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F7DDB5A25B43B18008F7C71 /* BinaryTreeTests.swift in Sources */,
+				2F7DDB5A25B43B18008F7C71 /* TournamentTreeTests.swift in Sources */,
 				2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
