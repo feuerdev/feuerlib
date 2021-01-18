@@ -21,6 +21,7 @@ class TournamentTreeTests: XCTestCase {
         XCTAssertNil(sut.right)
     }
     
+    
     func testCreateTournamentWithoutCompetitorsDoesNotCrash() {
         XCTAssertNoThrow(TournamentTree([]))
     }
@@ -40,8 +41,11 @@ class TournamentTreeTests: XCTestCase {
         XCTAssertNotNil(sut.finals.left)
         XCTAssertNil(sut.finals.left?.winner)
         XCTAssertNotNil(sut.finals.right)
-        XCTAssertNil(sut.finals.right?.winner)
     }
     
+    func testCreateTournamentWithThreeCompetitorsThirdCompetitorInstantlyWinsHisBye() {
+        let sut = TournamentTree([0,1,2])
+        XCTAssertEqual(sut.finals.right?.winner, 2)
+    }
 
 }
