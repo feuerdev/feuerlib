@@ -10,6 +10,7 @@ import XCTest
 
 class TournamentTreeTests: XCTestCase {
 
+    //Node Tests
     func testNodeReturnsValue() {
         let sut = Node(1)
         XCTAssertEqual(sut.winner, 1)
@@ -21,7 +22,23 @@ class TournamentTreeTests: XCTestCase {
         XCTAssertNil(sut.right)
     }
     
+    func testDepthOfDefaultNodeIsZero() {
+        let sut = Node(1)
+        XCTAssertEqual(sut.depth(), 0)
+    }
     
+    func testDepthOfTwoLevelNodeIsTwo() {
+        let sut = Node(1)
+        sut.left = Node(1)
+        sut.left?.left = Node(1)
+        XCTAssertEqual(sut.depth(), 2)
+        let sut2 = Node(1)
+        sut2.right = Node(1)
+        sut2.right?.left = Node(1)
+        XCTAssertEqual(sut2.depth(), 2)
+    }
+    
+    //Tournament Tests
     func testCreateTournamentWithoutCompetitorsDoesNotCrash() {
         XCTAssertNoThrow(TournamentTree([]))
     }
@@ -45,6 +62,14 @@ class TournamentTreeTests: XCTestCase {
     
     func testCreateTournamentWithThreeCompetitorsThirdCompetitorInstantlyWinsHisBye() {
         let sut = TournamentTree([0,1,2])
+        XCTAssertEqual(sut.finals.right?.winner, 1)
+        
+        //Test resolving a bye where the left side is of a match empty. During normal creation this never happens
+        let sut2 = TournamentTree([0,1,2])
+        sut2.finals.right?.right = sut2.finals.right?.left
+        sut2.finals.right?.left = nil
+        sut2.finals.right?.winner = nil
+        sut2.resolveByes(sut2.finals)
         XCTAssertEqual(sut.finals.right?.winner, 1)
     }
     
