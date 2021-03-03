@@ -73,7 +73,19 @@ class TournamentTreeTests: XCTestCase {
         XCTAssertEqual(sut.finals.right?.winner, 1)
     }
     
-    func testTraversals() {
+    func testDepthFirstTraversal() {
+        let sut = TournamentTree(Array(1...4))
+        var count = 0
+        var items = [Int]()
+        sut.traverse() { (node) in
+            count += 1
+            items.append(node.winner ?? -1)
+        }
+        XCTAssertEqual(count, 7)
+        XCTAssertEqual(items, [-1, -1, 1, 3, -1, 2, 4])
+    }
+    
+    func testBottomUpBreadthTraversal() {
         let sut = TournamentTree(Array(1...8))
         var count = 0
         var items = [Int]()
