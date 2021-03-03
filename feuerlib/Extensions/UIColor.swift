@@ -27,4 +27,21 @@ extension UIColor {
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
+    
+    ///Slightly faded version of the default label color
+    @available(iOS 13.0, *)
+    public static let highlightedLabel = UIColor.label.withAlphaComponent(0.8)
+    
+    ///Slightly faded version of the current color
+    public var highlighted: UIColor { withAlphaComponent(0.8) }
+    
+    ///UIImage of current color
+    public var image: UIImage {
+        let pixel = CGSize(width: 1, height: 1)
+        return UIGraphicsImageRenderer(size: pixel).image { context in
+            self.setFill()
+            context.fill(CGRect(origin: .zero, size: pixel))
+        }
+    }
+    
 }
