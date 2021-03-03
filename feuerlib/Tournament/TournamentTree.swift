@@ -7,32 +7,14 @@
 
 import Foundation
 
-class Node<T> {
-    var winner: T?
-    var left: Node?
-    var right: Node?
+///A TournamentTree is a binary Tree that is built from the bottom up to represent a knockout tournament.
+public class TournamentTree<T> {
     
-    convenience init(_ value:T) {
-        self.init()
-        self.winner = value
-    }
-    
-    func depth() -> Int {
-        if left == nil && right == nil {
-            return 0
-        } else {
-            let lDepth = (left?.depth() ?? 0) + 1
-            let rDepth = (right?.depth() ?? 0) + 1
-            return max(lDepth, rDepth)
-        }
-    }
-}
-
-class TournamentTree<T> {
+    ///Root node of the tree
     var finals: Node<T>
     var competitors: [T]
     
-    init(_ competitors:[T]) {
+    public init(_ competitors:[T]) {
         self.competitors = competitors
         self.finals = Node()
         
@@ -41,7 +23,8 @@ class TournamentTree<T> {
         resolveByes(finals)
     }
     
-    func rounds() -> Int {
+    ///Returns the number of Rounds in the Tournament (Layers in the Tree)
+    public func rounds() -> Int {
         guard competitors.count > 0 else {
             return 0
         }
@@ -49,7 +32,8 @@ class TournamentTree<T> {
         return Int(ceil(log2(Double(competitors.count))))
     }
     
-    func nextOpenMatch() -> Node<T>? {
+    ///Returns the first unresolved match found in a bottom-up-breadth-first search
+    public func nextOpenMatch() -> Node<T>? {
         var found = false
         var result: Node<T>? = nil
         traverseBottomUpBreadth { (node) in
@@ -64,17 +48,22 @@ class TournamentTree<T> {
         return result
     }
     
-    func traverse(_ node:Node<T>, perNode: ((Node<T>) -> Void)) {
-        perNode(node)
-        if let left = node.left {
-            traverse(left, perNode: perNode)
+    ///Calls the given closure for every Node in the Tree in order depth-first order
+    func traverse(perNode: ((Node<T>) -> Void)) {
+        func helper(_ node:Node<T>, perNode: ((Node<T>) -> Void)) {
+            perNode(node)
+            if let left = node.left {
+                helper(left, perNode: perNode)
+            }
+            if let right = node.right {
+                helper(right, perNode: perNode)
+            }
         }
-        if let right = node.right {
-            traverse(right, perNode: perNode)
-        }
+        helper(self.finals, perNode: perNode)
     }
     
-    func traverseBottomUpBreadth(levels:Int, perNode: ((Node<T>) -> Void)) {
+    ///Helper function
+    private func traverseBottomUpBreadth(levels:Int, perNode: ((Node<T>) -> Void)) {
         var result = [Node<T>]();
 
         var q = [finals]
@@ -100,11 +89,13 @@ class TournamentTree<T> {
         }
     }
     
-    func traverseBottomUpBreadth(perNode: ((Node<T>) -> Void)) {
+    ///Calls the given closure for every Node in the Tree in order of the matches being played
+    public func traverseBottomUpBreadth(perNode: ((Node<T>) -> Void)) {
         traverseBottomUpBreadth(levels: self.rounds(), perNode: perNode)
     }
     
-    func resolveByes(_ node:Node<T>) {
+    ///Automatically advances players in matches with only one competitor
+    public func resolveByes(_ node:Node<T>) {
         traverseBottomUpBreadth(levels: 1) { (node) in
             let leftWinner = node.left?.winner
             let rightWinner = node.right?.winner
@@ -118,9 +109,7 @@ class TournamentTree<T> {
         }
     }
     
-    /**
-     Creates an empty Tournament Tree structure acording to the number of rounds to be played
-     */
+    ///Creates an empty Tournament Tree structure acording to the number of rounds to be played
     @discardableResult private func build(_ root:Node<T>, rounds:Int) -> Node<T> {
         if rounds > 0 {
             root.left = build(Node(),rounds: rounds - 1)
@@ -129,9 +118,7 @@ class TournamentTree<T> {
         return root
     }
     
-    /**
-     Populates a Tournament tree breadth first and bottom up
-     */
+    ///Populates a Tournament tree breadth first and bottom up
     private func populate(_ tree:Node<T>, _ competitors:[T]) {
         var index = 0
         var evenIndex = 0
