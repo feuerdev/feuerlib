@@ -20,6 +20,9 @@
 		2FC18CF22597A612002BEBD3 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC18CF12597A612002BEBD3 /* General.swift */; };
 		2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B76B2599E5170096862A /* UISearchBar.swift */; };
 		2FC8B7762599F9A50096862A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B7752599F9A50096862A /* UIViewController.swift */; };
+		2FE8473025DA6CB40075958C /* FeuerShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8472F25DA6CB40075958C /* FeuerShareViewController.swift */; };
+		2FF7316325EF7A2100D58844 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7316225EF7A2100D58844 /* Node.swift */; };
+		2FF7316425EF7A2100D58844 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7316225EF7A2100D58844 /* Node.swift */; };
 		2FFADEAA25762D4900AC906C /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEA925762D4900AC906C /* Double.swift */; };
 		2FFADEAE25762D9400AC906C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEAD25762D9400AC906C /* Collection.swift */; };
 		2FFADEB225762DB000AC906C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEB125762DB000AC906C /* UIColor.swift */; };
@@ -51,6 +54,8 @@
 		2FC18CF12597A612002BEBD3 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		2FC8B76B2599E5170096862A /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
 		2FC8B7752599F9A50096862A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		2FE8472F25DA6CB40075958C /* FeuerShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeuerShareViewController.swift; sourceTree = "<group>"; };
+		2FF7316225EF7A2100D58844 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		2FFADEA925762D4900AC906C /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		2FFADEAD25762D9400AC906C /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		2FFADEB125762DB000AC906C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -96,6 +101,8 @@
 		2F22D0B625760E3700F10E0E /* feuerlib */ = {
 			isa = PBXGroup;
 			children = (
+				2FF7316125EF7A0D00D58844 /* Tournament */,
+				2FF7316025EF79E100D58844 /* Raytracer */,
 				2F7DDB2F25B43940008F7C71 /* Extensions */,
 				2F22D0B825760E3700F10E0E /* Info.plist */,
 				2F22D0D225760FDE00F10E0E /* ImageCache.swift */,
@@ -103,7 +110,7 @@
 				2FC18CF12597A612002BEBD3 /* General.swift */,
 				2F84023E259C9666006C12B0 /* CachableResult.swift */,
 				2F871B5B25AD854A004BA869 /* UIDocumentImageView.swift */,
-				2F7DDB3225B43962008F7C71 /* TournamentTree.swift */,
+				2FE8472F25DA6CB40075958C /* FeuerShareViewController.swift */,
 			);
 			path = feuerlib;
 			sourceTree = "<group>";
@@ -129,6 +136,22 @@
 				2F871B6A25ADC7E6004BA869 /* UIView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2FF7316025EF79E100D58844 /* Raytracer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Raytracer;
+			sourceTree = "<group>";
+		};
+		2FF7316125EF7A0D00D58844 /* Tournament */ = {
+			isa = PBXGroup;
+			children = (
+				2F7DDB3225B43962008F7C71 /* TournamentTree.swift */,
+				2FF7316225EF7A2100D58844 /* Node.swift */,
+			);
+			path = Tournament;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,7 +210,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1240;
 				TargetAttributes = {
 					2F22D0B325760E3700F10E0E = {
 						CreatedOnToolsVersion = 12.2;
@@ -245,10 +268,12 @@
 				2FFADEAA25762D4900AC906C /* Double.swift in Sources */,
 				2F871B6B25ADC7E6004BA869 /* UIView.swift in Sources */,
 				2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */,
+				2FF7316325EF7A2100D58844 /* Node.swift in Sources */,
 				2F871B5C25AD854A004BA869 /* UIDocumentImageView.swift in Sources */,
 				2FFADEAE25762D9400AC906C /* Collection.swift in Sources */,
 				2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */,
 				2F7DDB3325B43962008F7C71 /* TournamentTree.swift in Sources */,
+				2FE8473025DA6CB40075958C /* FeuerShareViewController.swift in Sources */,
 				2F42ED6625A994E100136F90 /* UITableView.swift in Sources */,
 				2FC8B7762599F9A50096862A /* UIViewController.swift in Sources */,
 				2FFADEB225762DB000AC906C /* UIColor.swift in Sources */,
@@ -259,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FF7316425EF7A2100D58844 /* Node.swift in Sources */,
 				2F7DDB5A25B43B18008F7C71 /* TournamentTreeTests.swift in Sources */,
 				2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */,
 			);
@@ -400,6 +426,7 @@
 		2F22D0C925760E3800F10E0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -428,6 +455,7 @@
 		2F22D0CA25760E3800F10E0E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
