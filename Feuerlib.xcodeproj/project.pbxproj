@@ -23,6 +23,20 @@
 		2FE8473025DA6CB40075958C /* FeuerShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8472F25DA6CB40075958C /* FeuerShareViewController.swift */; };
 		2FF7316325EF7A2100D58844 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7316225EF7A2100D58844 /* Node.swift */; };
 		2FF7316425EF7A2100D58844 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7316225EF7A2100D58844 /* Node.swift */; };
+		2FF7316A25EF856800D58844 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7316925EF856800D58844 /* Scene.swift */; };
+		2FF7316B25EF856800D58844 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7316925EF856800D58844 /* Scene.swift */; };
+		2FF7317225EF859E00D58844 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7317125EF859E00D58844 /* Vector3.swift */; };
+		2FF7317325EF859E00D58844 /* Vector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7317125EF859E00D58844 /* Vector3.swift */; };
+		2FF7317925EF85E700D58844 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7317825EF85E700D58844 /* Light.swift */; };
+		2FF7317A25EF85E700D58844 /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7317825EF85E700D58844 /* Light.swift */; };
+		2FF7317E25EF861800D58844 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7317D25EF861800D58844 /* Sphere.swift */; };
+		2FF7317F25EF861800D58844 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7317D25EF861800D58844 /* Sphere.swift */; };
+		2FF7318325EF891B00D58844 /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7318225EF891B00D58844 /* Intersection.swift */; };
+		2FF7318425EF891B00D58844 /* Intersection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7318225EF891B00D58844 /* Intersection.swift */; };
+		2FF7318C25EF892D00D58844 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7318B25EF892D00D58844 /* Ray.swift */; };
+		2FF7318D25EF892D00D58844 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7318B25EF892D00D58844 /* Ray.swift */; };
+		2FF7319525EF8D8E00D58844 /* Raytracer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7319425EF8D8E00D58844 /* Raytracer.swift */; };
+		2FF7319625EF8D8E00D58844 /* Raytracer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7319425EF8D8E00D58844 /* Raytracer.swift */; };
 		2FFADEAA25762D4900AC906C /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEA925762D4900AC906C /* Double.swift */; };
 		2FFADEAE25762D9400AC906C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEAD25762D9400AC906C /* Collection.swift */; };
 		2FFADEB225762DB000AC906C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFADEB125762DB000AC906C /* UIColor.swift */; };
@@ -56,6 +70,13 @@
 		2FC8B7752599F9A50096862A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		2FE8472F25DA6CB40075958C /* FeuerShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeuerShareViewController.swift; sourceTree = "<group>"; };
 		2FF7316225EF7A2100D58844 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		2FF7316925EF856800D58844 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		2FF7317125EF859E00D58844 /* Vector3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector3.swift; sourceTree = "<group>"; };
+		2FF7317825EF85E700D58844 /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
+		2FF7317D25EF861800D58844 /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
+		2FF7318225EF891B00D58844 /* Intersection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intersection.swift; sourceTree = "<group>"; };
+		2FF7318B25EF892D00D58844 /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
+		2FF7319425EF8D8E00D58844 /* Raytracer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Raytracer.swift; sourceTree = "<group>"; };
 		2FFADEA925762D4900AC906C /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		2FFADEAD25762D9400AC906C /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		2FFADEB125762DB000AC906C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -101,6 +122,7 @@
 		2F22D0B625760E3700F10E0E /* feuerlib */ = {
 			isa = PBXGroup;
 			children = (
+				2FF7317025EF858200D58844 /* Util */,
 				2FF7316125EF7A0D00D58844 /* Tournament */,
 				2FF7316025EF79E100D58844 /* Raytracer */,
 				2F7DDB2F25B43940008F7C71 /* Extensions */,
@@ -141,6 +163,9 @@
 		2FF7316025EF79E100D58844 /* Raytracer */ = {
 			isa = PBXGroup;
 			children = (
+				2FF7319425EF8D8E00D58844 /* Raytracer.swift */,
+				2FF7316925EF856800D58844 /* Scene.swift */,
+				2FF7317825EF85E700D58844 /* Light.swift */,
 			);
 			path = Raytracer;
 			sourceTree = "<group>";
@@ -152,6 +177,17 @@
 				2FF7316225EF7A2100D58844 /* Node.swift */,
 			);
 			path = Tournament;
+			sourceTree = "<group>";
+		};
+		2FF7317025EF858200D58844 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2FF7317125EF859E00D58844 /* Vector3.swift */,
+				2FF7318225EF891B00D58844 /* Intersection.swift */,
+				2FF7317D25EF861800D58844 /* Sphere.swift */,
+				2FF7318B25EF892D00D58844 /* Ray.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,14 +298,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FF7317925EF85E700D58844 /* Light.swift in Sources */,
 				2FC18CF22597A612002BEBD3 /* General.swift in Sources */,
 				2F84023F259C9666006C12B0 /* CachableResult.swift in Sources */,
 				2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */,
 				2FFADEAA25762D4900AC906C /* Double.swift in Sources */,
+				2FF7317E25EF861800D58844 /* Sphere.swift in Sources */,
+				2FF7316A25EF856800D58844 /* Scene.swift in Sources */,
+				2FF7319525EF8D8E00D58844 /* Raytracer.swift in Sources */,
 				2F871B6B25ADC7E6004BA869 /* UIView.swift in Sources */,
+				2FF7318325EF891B00D58844 /* Intersection.swift in Sources */,
 				2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */,
 				2FF7316325EF7A2100D58844 /* Node.swift in Sources */,
 				2F871B5C25AD854A004BA869 /* UIDocumentImageView.swift in Sources */,
+				2FF7318C25EF892D00D58844 /* Ray.swift in Sources */,
+				2FF7317225EF859E00D58844 /* Vector3.swift in Sources */,
 				2FFADEAE25762D9400AC906C /* Collection.swift in Sources */,
 				2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */,
 				2F7DDB3325B43962008F7C71 /* TournamentTree.swift in Sources */,
@@ -284,8 +327,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FF7317F25EF861800D58844 /* Sphere.swift in Sources */,
+				2FF7317A25EF85E700D58844 /* Light.swift in Sources */,
+				2FF7316B25EF856800D58844 /* Scene.swift in Sources */,
 				2FF7316425EF7A2100D58844 /* Node.swift in Sources */,
+				2FF7318425EF891B00D58844 /* Intersection.swift in Sources */,
+				2FF7319625EF8D8E00D58844 /* Raytracer.swift in Sources */,
 				2F7DDB5A25B43B18008F7C71 /* TournamentTreeTests.swift in Sources */,
+				2FF7318D25EF892D00D58844 /* Ray.swift in Sources */,
+				2FF7317325EF859E00D58844 /* Vector3.swift in Sources */,
 				2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
