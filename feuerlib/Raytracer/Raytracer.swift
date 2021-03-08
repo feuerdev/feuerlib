@@ -75,7 +75,7 @@ public class Raytracer {
     }
     
     ///Calculate light level for a given ray
-    private func computeLighting(_ point:Vector3, _ normal:Vector3) -> Float {
+    private func computeLighting(_ point:Vector3, _ normal:Vector3, _ view:Vector3, _ specular:Int) -> Float {
         var intensity:Float = 0.0
         var L:Vector3? = nil
         for light in scene.lights {
@@ -87,9 +87,24 @@ public class Raytracer {
                 } else {
                     L = light.direction
                 }
-                let n_dot_1 = Vector3.dot(normal, L!)
+                
+                guard let L = L else {
+                    return 0
+                }
+                
+                //Diffuse
+                let n_dot_1 = Vector3.dot(normal, L)
                 if n_dot_1 > 0 {
-                    intensity += light.intensity * n_dot_1 / (normal.length() * L!.length())
+                    intensity += light.intensity * n_dot_1 / (normal.length() * L.length())
+                }
+                
+                //Specular
+                if specular != -1 {
+                    let R = (normal * (2 * Vector3.dot(normal, L))) - L
+                    let r_dot_v = Vector3.dot(R, view)
+                    if r_dot_v > 0 {
+                        intensity += light.intensity * powf(r_dot_v / (R.length() * view.length()), Float(specular))
+                    }
                 }
             }
         }
@@ -124,7 +139,8 @@ public class Raytracer {
         
         let intersection: Vector3 = (ray.origin + tClosest) * ray.direction
         let normal = (intersection - sphere.center).normalize()
-        let factor = computeLighting(intersection, normal)
+        let view = ray.direction * -1
+        let factor = computeLighting(intersection, normal, view, sphere.specular)
         
         //Get r,g,b,a values -> drop alpha -> multiply with light factor -> clamp to reasonable value
         let comps: [Int] = sphere.color.toRGBAIntComponents().prefix(3).map {
