@@ -78,18 +78,27 @@ public class Raytracer {
     private func computeLighting(_ point:Vector3, _ normal:Vector3, _ view:Vector3, _ specular:Int) -> Float {
         var intensity:Float = 0.0
         var L:Vector3? = nil
+        var tMax:Float = 0
         for light in scene.lights {
             if light.type == .ambient {
                 intensity += light.intensity
             } else {
                 if light.type == .point {
                     L = light.position - point
+                    tMax = 1
                 } else {
                     L = light.direction
+                    tMax = Float.greatestFiniteMagnitude
                 }
                 
                 guard let L = L else {
                     return 0
+                }
+                
+                // Shadow check
+                let (shadowSphere, _) = closestIntersection(Ray(origin: point, direction: L), tMin: 0.001, tMax: tMax)
+                if shadowSphere != nil {
+                    continue
                 }
                 
                 //Diffuse
@@ -110,15 +119,8 @@ public class Raytracer {
         }
         return intensity
     }
-
-    /// Calculates the target color of a given ray
-    /// - Parameters:
-    ///   - from: Vector3 of camera origin
-    ///   - to: Vector3 of viewport coordinate
-    ///   - tMin: Position on ray to start tracing
-    ///   - tMax: Position on ray to end tracing
-    /// - Returns: UInt32 of target color
-    private func traceRay(_ ray:Ray, tMin:Float, tMax:Float) -> UInt32 {
+    
+    private func closestIntersection(_ ray:Ray, tMin:Float, tMax:Float) -> (Sphere?, Float) {
         var tClosest = Float.greatestFiniteMagnitude
         var sClosest:Sphere? = nil
         for sphere in scene.spheres {
@@ -132,6 +134,18 @@ public class Raytracer {
                 sClosest = sphere
             }
         }
+        return (sClosest, tClosest)
+    }
+
+    /// Calculates the target color of a given ray
+    /// - Parameters:
+    ///   - from: Vector3 of camera origin
+    ///   - to: Vector3 of viewport coordinate
+    ///   - tMin: Position on ray to start tracing
+    ///   - tMax: Position on ray to end tracing
+    /// - Returns: UInt32 of target color
+    private func traceRay(_ ray:Ray, tMin:Float, tMax:Float) -> UInt32 {
+        let (sClosest, tClosest) = closestIntersection(ray, tMin: tMin, tMax: tMax)
         
         guard let sphere = sClosest else {
             return background
