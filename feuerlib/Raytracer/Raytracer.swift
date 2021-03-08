@@ -136,8 +136,8 @@ public class Raytracer {
     /// - Returns: CGContext or nil
     private func createContext() -> CGContext? {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo.byteOrder32Big.rawValue |
-                         CGImageAlphaInfo.premultipliedLast.rawValue &
+        let bitmapInfo = CGBitmapInfo.byteOrder32Little.rawValue |
+                         CGImageAlphaInfo.premultipliedFirst.rawValue &
                          CGBitmapInfo.alphaInfoMask.rawValue
 
         let mutatablePointer = UnsafeMutableRawBufferPointer(start: &pixels, count: pixels.count).baseAddress
