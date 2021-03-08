@@ -169,6 +169,7 @@
 				2FF7319425EF8D8E00D58844 /* Raytracer.swift */,
 				2FF7316925EF856800D58844 /* Scene.swift */,
 				2FF7317825EF85E700D58844 /* Light.swift */,
+				2FF7317D25EF861800D58844 /* Sphere.swift */,
 			);
 			path = Raytracer;
 			sourceTree = "<group>";
@@ -187,7 +188,6 @@
 			children = (
 				2FF7317125EF859E00D58844 /* Vector3.swift */,
 				2FF7318225EF891B00D58844 /* Intersection.swift */,
-				2FF7317D25EF861800D58844 /* Sphere.swift */,
 				2FF7318B25EF892D00D58844 /* Ray.swift */,
 			);
 			path = Util;
