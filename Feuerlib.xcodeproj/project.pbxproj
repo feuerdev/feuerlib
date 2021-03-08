@@ -10,6 +10,7 @@
 		2F22D0BE25760E3800F10E0E /* Feuerlib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F22D0B425760E3700F10E0E /* Feuerlib.framework */; };
 		2F22D0D325760FDE00F10E0E /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D225760FDE00F10E0E /* ImageCache.swift */; };
 		2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22D0D62576118F00F10E0E /* ServiceError.swift */; };
+		2F27F90225F0AF6800712F53 /* UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27F90125F0AF6800712F53 /* UInt32.swift */; };
 		2F42ED6625A994E100136F90 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F42ED6525A994E100136F90 /* UITableView.swift */; };
 		2F7DDB3325B43962008F7C71 /* TournamentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB3225B43962008F7C71 /* TournamentTree.swift */; };
 		2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB3225B43962008F7C71 /* TournamentTree.swift */; };
@@ -59,6 +60,7 @@
 		2F22D0C425760E3800F10E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F22D0D225760FDE00F10E0E /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		2F22D0D62576118F00F10E0E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		2F27F90125F0AF6800712F53 /* UInt32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt32.swift; sourceTree = "<group>"; };
 		2F42ED6525A994E100136F90 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		2F7DDB3225B43962008F7C71 /* TournamentTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTree.swift; sourceTree = "<group>"; };
 		2F7DDB5925B43B18008F7C71 /* TournamentTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTreeTests.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				2FC8B7752599F9A50096862A /* UIViewController.swift */,
 				2F42ED6525A994E100136F90 /* UITableView.swift */,
 				2F871B6A25ADC7E6004BA869 /* UIView.swift */,
+				2F27F90125F0AF6800712F53 /* UInt32.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				2F84023F259C9666006C12B0 /* CachableResult.swift in Sources */,
 				2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */,
 				2FFADEAA25762D4900AC906C /* Double.swift in Sources */,
+				2F27F90225F0AF6800712F53 /* UInt32.swift in Sources */,
 				2FF7317E25EF861800D58844 /* Sphere.swift in Sources */,
 				2FF7316A25EF856800D58844 /* Scene.swift in Sources */,
 				2FF7319525EF8D8E00D58844 /* Raytracer.swift in Sources */,
