@@ -160,13 +160,12 @@ public class Raytracer {
         let bitmapInfo = CGBitmapInfo.byteOrder32Little.rawValue |
                          CGImageAlphaInfo.premultipliedFirst.rawValue &
                          CGBitmapInfo.alphaInfoMask.rawValue
-
-        let mutablePointer = UnsafeMutableRawBufferPointer(start: &pixels, count: pixels.count).baseAddress
         let height = pixels.count / width
         let bytesPerRow = width * 4
-
-        let context = CGContext(data: mutablePointer, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
+        let context = pixels.withUnsafeMutableBufferPointer { (ptr) -> CGContext? in
+            let context = CGContext(data: ptr.baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
+            return context
+        }
         return context
-        
     }
 }
