@@ -126,8 +126,13 @@ public class Raytracer {
         let normal = (intersection - sphere.center).normalize()
         let factor = computeLighting(intersection, normal)
         
-        //Get r,g,b,a values -> drop alpha -> multiply with light factor
-        let comps: [Int] = sphere.color.toRGBAIntComponents().prefix(3).map { Int(Float($0)*factor) }
+        //Get r,g,b,a values -> drop alpha -> multiply with light factor -> clamp to reasonable value
+        let comps: [Int] = sphere.color.toRGBAIntComponents().prefix(3).map {
+            let color = Float($0)*factor
+            let clamped = max(min(color, 255), 0)
+            let asInt = Int(clamped)
+            return asInt
+        }
 
         return UInt32(a: 255, r: comps[0], g: comps[1], b: comps[2])
     }
