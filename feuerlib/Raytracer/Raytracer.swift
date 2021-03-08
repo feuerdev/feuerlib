@@ -121,15 +121,15 @@ public class Raytracer {
         guard let sphere = sClosest else {
             return background
         }
-        let P:Vector3 = (ray.origin + tClosest) * ray.direction// Compute intersection
-        var N = P - sphere.center  // Compute sphere normal at intersection
-        N = N / N.length()
         
-        let factor = computeLighting(P, N)
-        let color = sphere.color >> 8
-        let lightcolor = Float(color) * factor
-        let withAlpha = 0xFF000000 + UInt32(lightcolor)
-        return withAlpha
+        let intersection: Vector3 = (ray.origin + tClosest) * ray.direction
+        let normal = (intersection - sphere.center).normalize()
+        let factor = computeLighting(intersection, normal)
+        
+        //Get r,g,b,a values -> drop alpha -> multiply with light factor
+        let comps: [Int] = sphere.color.toRGBAIntComponents().prefix(3).map { Int(Float($0)*factor) }
+
+        return UInt32(a: 255, r: comps[0], g: comps[1], b: comps[2])
     }
 
     /// Sets up the rendering context using CoreGraphics
