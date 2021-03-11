@@ -13,7 +13,7 @@ public class Raytracer {
     public var scene:Scene
     
     ///Background color
-    let background:UInt32
+    let background:RGBColor
     
     ///Pixel buffer
     var pixels: [UInt32]
@@ -23,12 +23,12 @@ public class Raytracer {
     ///   - width: width of Canvas
     ///   - height: height of Canvas
     ///   - background: default pixel background color
-    public init(width:Int, height:Int, scene:Scene, background:UInt32 = 0xff000000) {
+    public init(width:Int, height:Int, scene:Scene, background:RGBColor = .black, rDepth:Int = 2) {
         self.width = width
         self.height = height
         self.scene = scene
         self.background = background
-        self.pixels = [UInt32](repeating: background, count: width*height)
+        self.pixels = [UInt32](repeating: background.toUInt32(), count: width*height)
     }
 
     /// Render the scene
@@ -43,11 +43,11 @@ public class Raytracer {
     ///   - x: Cartesian X coordinate
     ///   - y: Cartesian Y coordinate
     ///   - color: Color of pixel
-    private func putPixel(_ x:Int, _ y:Int, _ color: UInt32) {
+    private func putPixel(_ x:Int, _ y:Int, _ color: RGBColor) {
         let sX = (width/2)+x
         let sY = (height/2)-y-1
         let index = (width*sY)+(sX)
-        pixels[index] = color
+        pixels[index] = color.toUInt32()
     }
 
     /// Main work function iterates through each pixel on the canvas and calculates its pixel
@@ -143,8 +143,7 @@ public class Raytracer {
     ///   - to: Vector3 of viewport coordinate
     ///   - tMin: Position on ray to start tracing
     ///   - tMax: Position on ray to end tracing
-    /// - Returns: UInt32 of target color
-    private func traceRay(_ ray:Ray, tMin:Float, tMax:Float) -> UInt32 {
+    /// - Returns: RGBColor of target color
         let (sClosest, tClosest) = closestIntersection(ray, tMin: tMin, tMax: tMax)
         
         guard let sphere = sClosest else {

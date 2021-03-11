@@ -7,10 +7,10 @@
 public struct Sphere {
     var center:Vector3
     var radius:Float
-    var color: UInt32
+    var color: RGBColor
     var specular: Int
     
-    public init(center:Vector3, radius:Float, color:UInt32, specular:Int) {
+    public init(center:Vector3, radius:Float, color:RGBColor, specular:Int = -1, reflectivity:Float = 0) {
         self.center = center
         self.radius = radius
         self.color = color
