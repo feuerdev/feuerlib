@@ -23,6 +23,9 @@ public class Raytracer {
     
     ///Pixel buffer
     var pixels: [UInt32]
+    
+    //Very small number
+    let epsilon: Float = 0.01
 
     /// Constructor
     /// - Parameters:
