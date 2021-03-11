@@ -9,6 +9,9 @@ public class Raytracer {
     ///Height of Canvas
     let height:Int
     
+    //Aspect Ratio
+    let aspect:Float
+    
     ///Scene Data
     public var scene:Scene
     
@@ -30,6 +33,7 @@ public class Raytracer {
     public init(width:Int, height:Int, scene:Scene, background:RGBColor = .black, rDepth:Int = 2) {
         self.width = width
         self.height = height
+        self.aspect = Float(height)/Float(width)
         self.scene = scene
         self.background = background
         self.pixels = [UInt32](repeating: background.toUInt32(), count: width*height)
@@ -75,7 +79,7 @@ public class Raytracer {
     private func canvasToViewport(_ x:Int, _ y:Int) -> Vector3 {
         return Vector3(
             Float(x)*scene.viewportSize/Float(width),
-            Float(y)*scene.viewportSize/Float(height),
+            Float(y)*(scene.viewportSize * aspect)/Float(height),
             scene.projectionPlane)
     }
     
