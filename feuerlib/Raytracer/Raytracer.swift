@@ -59,11 +59,11 @@ public class Raytracer {
         pixels[index] = color.toUInt32()
     }
 
-    /// Main work function iterates through each pixel on the canvas and calculates its pixel
+    /// Main work function iterates through each pixel on the canvas and calculates its pixel color
     private func fillBuffer() {
         for x in -width/2..<width/2 {
             for y in -height/2..<height/2 {
-                let direction = canvasToViewport(x,y)
+                let direction = canvasToViewport(x,y) * scene.cameraRotation
                 let ray = Ray(origin: scene.cameraPosition, direction: direction)
                 let color = traceRay(ray, tMin:scene.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: self.rDepth)
                 putPixel(x,y,color)
