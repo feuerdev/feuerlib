@@ -15,6 +15,9 @@ public class Raytracer {
     ///Background color
     let background:RGBColor
     
+    ///Reflection Recursion Depth
+    let rDepth:Int
+    
     ///Pixel buffer
     var pixels: [UInt32]
 
@@ -23,12 +26,14 @@ public class Raytracer {
     ///   - width: width of Canvas
     ///   - height: height of Canvas
     ///   - background: default pixel background color
+    ///   - rDepth: reflection recursion depth
     public init(width:Int, height:Int, scene:Scene, background:RGBColor = .black, rDepth:Int = 2) {
         self.width = width
         self.height = height
         self.scene = scene
         self.background = background
         self.pixels = [UInt32](repeating: background.toUInt32(), count: width*height)
+        self.rDepth = rDepth
     }
 
     /// Render the scene
@@ -56,7 +61,7 @@ public class Raytracer {
             for y in -height/2..<height/2 {
                 let direction = canvasToViewport(x,y)
                 let ray = Ray(origin: scene.cameraPosition, direction: direction)
-                let color = traceRay(ray, tMin:scene.projectionPlane, tMax:Float.greatestFiniteMagnitude)
+                let color = traceRay(ray, tMin:scene.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: self.rDepth)
                 putPixel(x,y,color)
             }
         }
@@ -96,7 +101,7 @@ public class Raytracer {
                 }
                 
                 // Shadow check
-                let (shadowSphere, _) = closestIntersection(Ray(origin: point, direction: L), tMin: 0.001, tMax: tMax)
+                let (shadowSphere, _) = closestIntersection(Ray(origin: point, direction: L), tMin: epsilon, tMax: tMax)
                 if shadowSphere != nil {
                     continue
                 }
@@ -136,6 +141,10 @@ public class Raytracer {
         }
         return (sClosest, tClosest)
     }
+    
+    private func reflectRay(_ R:Vector3, _ N:Vector3) -> Vector3 {
+        return ((N * 2) * Vector3.dot(N, R)) - R
+    }
 
     /// Calculates the target color of a given ray
     /// - Parameters:
@@ -144,26 +153,30 @@ public class Raytracer {
     ///   - tMin: Position on ray to start tracing
     ///   - tMax: Position on ray to end tracing
     /// - Returns: RGBColor of target color
+    private func traceRay(_ ray:Ray, tMin:Float, tMax:Float, rDepth:Int) -> RGBColor {
         let (sClosest, tClosest) = closestIntersection(ray, tMin: tMin, tMax: tMax)
         
         guard let sphere = sClosest else {
             return background
         }
         
-        let intersection: Vector3 = (ray.origin + tClosest) * ray.direction
+        let intersection:Vector3 = ray.origin + (ray.direction * tClosest)
         let normal = (intersection - sphere.center).normalize()
         let view = ray.direction * -1
         let factor = computeLighting(intersection, normal, view, sphere.specular)
         
-        //Get r,g,b,a values -> drop alpha -> multiply with light factor -> clamp to reasonable value
-        let comps: [Int] = sphere.color.toRGBAIntComponents().prefix(3).map {
-            let color = Float($0)*factor
-            let clamped = max(min(color, 255), 0)
-            let asInt = Int(clamped)
-            return asInt
+        let color = sphere.color * factor
+        
+        let reflectivity = sphere.reflectivity
+        if rDepth <= 0 || reflectivity <= 0 {
+            return color
         }
 
-        return UInt32(a: 255, r: comps[0], g: comps[1], b: comps[2])
+        let reflectedRay = reflectRay(view, normal)
+        let reflectedColor = traceRay(Ray(origin: intersection, direction: reflectedRay), tMin: epsilon, tMax: Float.greatestFiniteMagnitude, rDepth: rDepth-1)
+        
+        let combinedColor = (color * (1 - reflectivity)) + (reflectedColor * reflectivity)
+        return combinedColor
     }
 
     /// Sets up the rendering context using CoreGraphics
