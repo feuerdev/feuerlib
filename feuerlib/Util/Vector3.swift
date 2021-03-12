@@ -57,6 +57,26 @@ public struct Vector3 {
         return result
     }
     
+    static public func multiply(_ m1:[[Float]], _ m2:[[Float]]) -> [[Float]] {
+        var result = m1
+        for i in 0..<3 {
+            for j in 0..<3 {
+                result[i][j] *= m2[i][j]
+            }
+        }
+        return result
+    }
+    
+    static public func add(_ m1:[[Float]], _ m2:[[Float]]) -> [[Float]] {
+        var result = m1
+        for i in 0..<3 {
+            for j in 0..<3 {
+                result[i][j] += m2[i][j]
+            }
+        }
+        return result
+    }
+    
     static public func / (_ v1:Vector3, _ number:Float) -> Vector3 {
         return .init(v1.x/number, v1.y/number, v1.z/number)
     }
