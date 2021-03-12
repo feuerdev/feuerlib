@@ -2,51 +2,57 @@ import CoreGraphics
 
 ///Basic Raytracing implemented in Swift based on CoreGraphics Bitmap Context
 public class Raytracer {
-
+    
     ///Width of Canvas
-    let width:Int
+    private var width:Int = 0
     
     ///Height of Canvas
-    let height:Int
+    private var height:Int = 0
     
     //Aspect Ratio
-    let aspect:Float
-    
-    ///Scene Data
-    public var scene:Scene
-    
-    ///Background color
-    let background:RGBColor
-    
-    ///Reflection Recursion Depth
-    let rDepth:Int
+    private var aspect:Float = 0
     
     ///Pixel buffer
-    var pixels: [UInt32]
+    private var pixels: [UInt32] = []
+    
+    ///Background color
+    private var background:RGBColor = .black
+    
+    ///Reflection Recursion Depth
+    private var rDepth:Int = 0
+    
+    ///Size of the viewport determines fov
+    private var viewportSize:Float = 1
+    
+    ///Distance of camera to viewport
+    private var projectionPlane:Float = 1
     
     //Very small number
     let epsilon: Float = 0.01
-
-    /// Constructor
-    /// - Parameters:
-    ///   - width: width of Canvas
-    ///   - height: height of Canvas
-    ///   - background: default pixel background color
-    ///   - rDepth: reflection recursion depth
-    public init(width:Int, height:Int, scene:Scene, background:RGBColor = .black, rDepth:Int = 2) {
-        self.width = width
-        self.height = height
-        self.aspect = Float(height)/Float(width)
-        self.scene = scene
-        self.background = background
-        self.pixels = [UInt32](repeating: background.toUInt32(), count: width*height)
-        self.rDepth = rDepth
+    
+    public init() {
+        //
     }
 
     /// Render the scene
     /// - Returns: Image or nil
-    public func draw() -> CGImage? {
-        fillBuffer()
+    public func draw(scene:Scene,
+                     width:Int,
+                     height:Int,
+                     background:RGBColor = .black,
+                     rDepth:Int = 2,
+                     projectionPlane:Float = 1,
+                     viewportSize:Float = 1) -> CGImage? {
+        self.width = width
+        self.height = height
+        self.aspect = Float(height)/Float(width)
+        self.pixels = [UInt32](repeating: background.toUInt32(), count: width*height)
+        self.background = background
+        self.rDepth = rDepth
+        self.projectionPlane = projectionPlane
+        self.viewportSize = viewportSize
+        
+        self.fillBuffer(scene: scene)
         return createContext()?.makeImage()
     }
 
@@ -59,16 +65,16 @@ public class Raytracer {
         let sX = (width/2)+x
         let sY = (height/2)-y-1
         let index = (width*sY)+(sX)
-        pixels[index] = color.toUInt32()
+        self.pixels[index] = color.toUInt32()
     }
 
     /// Main work function iterates through each pixel on the canvas and calculates its pixel color
-    private func fillBuffer() {
-        for x in -width/2..<width/2 {
-            for y in -height/2..<height/2 {
-                let direction = canvasToViewport(x,y) * scene.cameraRotation
+    private func fillBuffer(scene:Scene)  {
+        for x in -self.width/2..<self.width/2 {
+            for y in -self.height/2..<self.height/2 {
+                let direction = canvasToViewport(x, y) * scene.cameraRotation
                 let ray = Ray(origin: scene.cameraPosition, direction: direction)
-                let color = traceRay(ray, tMin:scene.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: self.rDepth)
+                let color = traceRay(scene:scene, ray, tMin:self.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: self.rDepth)
                 putPixel(x,y,color)
             }
         }
@@ -81,47 +87,47 @@ public class Raytracer {
     /// - Returns: Vector3 of given pixel on the viewport
     private func canvasToViewport(_ x:Int, _ y:Int) -> Vector3 {
         return Vector3(
-            Float(x)*scene.viewportSize/Float(width),
-            Float(y)*(scene.viewportSize * aspect)/Float(height),
-            scene.projectionPlane)
+            Float(x)*self.viewportSize/Float(width),
+            Float(y)*(self.viewportSize * aspect)/Float(height),
+            self.projectionPlane)
     }
     
     ///Calculate light level for a given ray
-    private func computeLighting(_ point:Vector3, _ normal:Vector3, _ view:Vector3, _ specular:Int) -> Float {
+    private func computeLighting(scene:Scene, _ point:Vector3, _ normal:Vector3, _ view:Vector3, _ specular:Int) -> Float {
         var intensity:Float = 0.0
-        var L:Vector3? = nil
+        var lightRay:Vector3? = nil
         var tMax:Float = 0
         for light in scene.lights {
             if light.type == .ambient {
                 intensity += light.intensity
             } else {
                 if light.type == .point {
-                    L = light.position - point
+                    lightRay = light.position - point
                     tMax = 1
                 } else {
-                    L = light.direction
+                    lightRay = light.direction
                     tMax = Float.greatestFiniteMagnitude
                 }
                 
-                guard let L = L else {
+                guard let lightRay = lightRay else {
                     return 0
                 }
                 
                 // Shadow check
-                let (shadowSphere, _) = closestIntersection(Ray(origin: point, direction: L), tMin: epsilon, tMax: tMax)
+                let (shadowSphere, _) = closestIntersection(scene:scene, Ray(origin: point, direction: lightRay), tMin: epsilon, tMax: tMax)
                 if shadowSphere != nil {
                     continue
                 }
                 
                 //Diffuse
-                let n_dot_1 = Vector3.dot(normal, L)
+                let n_dot_1 = Vector3.dot(normal, lightRay)
                 if n_dot_1 > 0 {
-                    intensity += light.intensity * n_dot_1 / (normal.length() * L.length())
+                    intensity += light.intensity * n_dot_1 / (normal.length() * lightRay.length())
                 }
                 
                 //Specular
                 if specular != -1 {
-                    let R = (normal * (2 * Vector3.dot(normal, L))) - L
+                    let R = (normal * (2 * Vector3.dot(normal, lightRay))) - lightRay
                     let r_dot_v = Vector3.dot(R, view)
                     if r_dot_v > 0 {
                         intensity += light.intensity * powf(r_dot_v / (R.length() * view.length()), Float(specular))
@@ -132,7 +138,7 @@ public class Raytracer {
         return intensity
     }
     
-    private func closestIntersection(_ ray:Ray, tMin:Float, tMax:Float) -> (Sphere?, Float) {
+    private func closestIntersection(scene:Scene, _ ray:Ray, tMin:Float, tMax:Float) -> (Sphere?, Float) {
         var tClosest = Float.greatestFiniteMagnitude
         var sClosest:Sphere? = nil
         for sphere in scene.spheres {
@@ -149,8 +155,8 @@ public class Raytracer {
         return (sClosest, tClosest)
     }
     
-    private func reflectRay(_ R:Vector3, _ N:Vector3) -> Vector3 {
-        return ((N * 2) * Vector3.dot(N, R)) - R
+    private func reflectRay(_ ray:Vector3, _ normal:Vector3) -> Vector3 {
+        return ((normal * 2) * Vector3.dot(normal, ray)) - ray
     }
 
     /// Calculates the target color of a given ray
@@ -160,8 +166,8 @@ public class Raytracer {
     ///   - tMin: Position on ray to start tracing
     ///   - tMax: Position on ray to end tracing
     /// - Returns: RGBColor of target color
-    private func traceRay(_ ray:Ray, tMin:Float, tMax:Float, rDepth:Int) -> RGBColor {
-        let (sClosest, tClosest) = closestIntersection(ray, tMin: tMin, tMax: tMax)
+    private func traceRay(scene:Scene, _ ray:Ray, tMin:Float, tMax:Float, rDepth:Int) -> RGBColor {
+        let (sClosest, tClosest) = closestIntersection(scene:scene, ray, tMin: tMin, tMax: tMax)
         
         guard let sphere = sClosest else {
             return background
@@ -170,7 +176,7 @@ public class Raytracer {
         let intersection:Vector3 = ray.origin + (ray.direction * tClosest)
         let normal = (intersection - sphere.center).normalize()
         let view = ray.direction * -1
-        let factor = computeLighting(intersection, normal, view, sphere.specular)
+        let factor = computeLighting(scene:scene, intersection, normal, view, sphere.specular)
         
         let color = sphere.color * factor
         
@@ -180,7 +186,7 @@ public class Raytracer {
         }
 
         let reflectedRay = reflectRay(view, normal)
-        let reflectedColor = traceRay(Ray(origin: intersection, direction: reflectedRay), tMin: epsilon, tMax: Float.greatestFiniteMagnitude, rDepth: rDepth-1)
+        let reflectedColor = traceRay(scene:scene, Ray(origin: intersection, direction: reflectedRay), tMin: epsilon, tMax: Float.greatestFiniteMagnitude, rDepth: rDepth-1)
         
         let combinedColor = (color * (1 - reflectivity)) + (reflectedColor * reflectivity)
         return combinedColor
