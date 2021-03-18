@@ -28,7 +28,10 @@ public class Raytracer {
     private var projectionPlane:Float = 1
     
     //Very small number
-    let epsilon: Float = 0.01
+    private let epsilon: Float = 0.01
+    
+    //Cancel tracing
+    public var cancelled = false
     
     public init() {
         //
@@ -53,6 +56,9 @@ public class Raytracer {
         self.viewportSize = viewportSize
         
         self.fillBuffer(scene: scene)
+        guard !cancelled else {
+            return nil
+        }
         return createContext()?.makeImage()
     }
 
@@ -69,9 +75,13 @@ public class Raytracer {
     }
 
     /// Main work function iterates through each pixel on the canvas and calculates its pixel color
-    private func fillBuffer(scene:Scene)  {
+    private func fillBuffer(scene:Scene) {
         for x in -self.width/2..<self.width/2 {
             for y in -self.height/2..<self.height/2 {
+                guard !cancelled else {
+                    return
+                }
+                
                 let direction = canvasToViewport(x, y) * scene.cameraRotation
                 let ray = Ray(origin: scene.cameraPosition, direction: direction)
                 let color = traceRay(scene:scene, ray, tMin:self.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: self.rDepth)
