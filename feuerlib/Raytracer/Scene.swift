@@ -4,7 +4,9 @@
 //
 //  Created by Jannik Feuerhahn on 03.03.21.
 //
-public struct Scene {
+public struct Scene: Hashable {
+    
+    
     public var spheres:[Sphere]
     public var lights:[Light]
     public var cameraPosition:Vector3

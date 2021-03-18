@@ -4,7 +4,7 @@
 //
 //  Created by Jannik Feuerhahn on 03.03.21.
 //
-public struct Vector3 {
+public struct Vector3: Hashable {
     public var x:Float
     public var y:Float
     public var z:Float

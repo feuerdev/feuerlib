@@ -4,7 +4,8 @@
 //
 //  Created by Jannik Feuerhahn on 03.03.21.
 //
-public struct Sphere {
+public struct Sphere: Hashable {
+    
     var center:Vector3
     var radius:Float
     var color: RGBColor

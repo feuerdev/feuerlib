@@ -8,7 +8,7 @@ public enum LightType {
     case point, ambient, directional
 }
 
-public struct Light {
+public struct Light: Hashable {
     let type: LightType
     let intensity: Float
     var position: Vector3 = Vector3(0,0,0)

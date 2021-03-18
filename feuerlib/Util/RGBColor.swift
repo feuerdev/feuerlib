@@ -6,7 +6,7 @@
 //
 
 ///RGB color representation without alpha component
-public struct RGBColor {
+public struct RGBColor: Hashable {
     let red:Int
     let green:Int
     let blue:Int
