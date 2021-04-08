@@ -35,12 +35,16 @@ extension UIColor {
     ///Slightly faded version of the current color
     public var highlighted: UIColor { withAlphaComponent(0.8) }
     
-    ///UIImage of current color
+    ///One pixel UIImage of current color
     public var image: UIImage {
-        let pixel = CGSize(width: 1, height: 1)
-        return UIGraphicsImageRenderer(size: pixel).image { context in
+        return image(size: .init(width: 1, height: 1))
+    }
+    
+    ///Returns UIImage of given size of color
+    public func image(size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { context in
             self.setFill()
-            context.fill(CGRect(origin: .zero, size: pixel))
+            context.fill(CGRect(origin: .zero, size: size))
         }
     }
     
