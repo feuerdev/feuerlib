@@ -4,6 +4,7 @@
 //
 //  Created by Jannik Feuerhahn on 10.03.21.
 //
+import UIKit
 
 ///RGB color representation without alpha component
 public struct RGBColor: Hashable {
@@ -21,6 +22,11 @@ public struct RGBColor: Hashable {
     public init(with hex:UInt32) {
         let comps = hex.toRGBAIntComponents()
         self.init(comps[0], comps[1], comps[2])
+    }
+    
+    ///Converts RGBColor to UIColor
+    public func toUIColor() -> UIColor {
+        return UIColor(red: CGFloat(red)/255.0, green: CGFloat(green)/255.0, blue: CGFloat(blue)/255.0, alpha: 1)
     }
     
     ///Converts RGBColor to UInt32 hex integer of format 0xFF000000 (alpha, r, g, b)
