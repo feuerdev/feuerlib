@@ -9,19 +9,14 @@ public struct Scene: Hashable {
     
     public var spheres:[Sphere]
     public var lights:[Light]
-    public var cameraPosition:Vector3
-    public var cameraRotation:[[Float]]
+    public var background:RGBColor
     
     public init(spheres:[Sphere],
                 lights:[Light],
-                cameraPosition:Vector3 = Vector3(0,0,0),
-                cameraRotation:[[Float]] = [[1, 0, 0],
-                                            [0, 1, 0],
-                                            [0, 0, 1]]) {
+                background:RGBColor = .black,
         self.spheres = spheres
         self.lights = lights
-        self.cameraPosition = cameraPosition
-        self.cameraRotation = cameraRotation
+        self.background = background
     }
     
     public static let testScene:Scene = {

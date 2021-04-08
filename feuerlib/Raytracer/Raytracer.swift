@@ -15,9 +15,6 @@ public class Raytracer {
     ///Pixel buffer
     private var pixels: [UInt32] = []
     
-    ///Background color
-    private var background:RGBColor = .black
-    
     ///Reflection Recursion Depth
     private var rDepth:Int = 0
     
@@ -42,18 +39,14 @@ public class Raytracer {
     public func draw(scene:Scene,
                      width:Int,
                      height:Int,
-                     background:RGBColor = .black,
                      rDepth:Int = 2,
                      projectionPlane:Float = 1,
                      viewportSize:Float = 1) -> CGImage? {
         self.width = width
         self.height = height
         self.aspect = Float(height)/Float(width)
-        self.pixels = [UInt32](repeating: background.toUInt32(), count: width*height)
-        self.background = background
+        self.pixels = [UInt32](repeating: scene.background.toUInt32(), count: width*height)
         self.rDepth = rDepth
-        self.projectionPlane = projectionPlane
-        self.viewportSize = viewportSize
         
         self.fillBuffer(scene: scene)
         guard !cancelled else {
