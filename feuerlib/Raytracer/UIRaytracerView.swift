@@ -107,11 +107,7 @@ public class UIRaytracerView: UIView {
                             self.slowestTracers.forEach { $0.cancel() }
                             let slowestTracer = Raytracer()
                             self.slowestTracers = [slowestTracer]
-                            slowestTracer.draw(scene: self.scene, width:self.width & ~1, height: self.height & ~1, updateHandler: { (img) in
-                                DispatchQueue.main.async {
-                                    self.ivImage.image = UIImage(cgImage: img)
-                                }
-                            }) { img in
+                            slowestTracer.draw(scene: self.scene, width:self.width & ~1, height: self.height & ~1) { img in
                                 DispatchQueue.main.async {
                                     self.ivImage.image = UIImage(cgImage: img)
                                 }
