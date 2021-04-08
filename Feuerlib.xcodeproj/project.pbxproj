@@ -13,6 +13,8 @@
 		2F27F90225F0AF6800712F53 /* UInt32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F27F90125F0AF6800712F53 /* UInt32.swift */; };
 		2F2D3FC525F86698005D6DAE /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2D3FC425F86698005D6DAE /* RGBColor.swift */; };
 		2F2D3FC625F86698005D6DAE /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2D3FC425F86698005D6DAE /* RGBColor.swift */; };
+		2F41ED922606606D00EF9A46 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41ED912606606D00EF9A46 /* Camera.swift */; };
+		2F41ED932606606D00EF9A46 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F41ED912606606D00EF9A46 /* Camera.swift */; };
 		2F42ED6625A994E100136F90 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F42ED6525A994E100136F90 /* UITableView.swift */; };
 		2F7DDB3325B43962008F7C71 /* TournamentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB3225B43962008F7C71 /* TournamentTree.swift */; };
 		2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7DDB3225B43962008F7C71 /* TournamentTree.swift */; };
@@ -23,6 +25,8 @@
 		2FC18CF22597A612002BEBD3 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC18CF12597A612002BEBD3 /* General.swift */; };
 		2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B76B2599E5170096862A /* UISearchBar.swift */; };
 		2FC8B7762599F9A50096862A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B7752599F9A50096862A /* UIViewController.swift */; };
+		2FD6D4D62604FB21008BE2E4 /* UIRaytracerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D4D52604FB21008BE2E4 /* UIRaytracerView.swift */; };
+		2FD6D4D72604FB21008BE2E4 /* UIRaytracerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD6D4D52604FB21008BE2E4 /* UIRaytracerView.swift */; };
 		2FE8473025DA6CB40075958C /* FeuerShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8472F25DA6CB40075958C /* FeuerShareViewController.swift */; };
 		2FF7316325EF7A2100D58844 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7316225EF7A2100D58844 /* Node.swift */; };
 		2FF7316425EF7A2100D58844 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF7316225EF7A2100D58844 /* Node.swift */; };
@@ -64,6 +68,7 @@
 		2F22D0D62576118F00F10E0E /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
 		2F27F90125F0AF6800712F53 /* UInt32.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt32.swift; sourceTree = "<group>"; };
 		2F2D3FC425F86698005D6DAE /* RGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
+		2F41ED912606606D00EF9A46 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		2F42ED6525A994E100136F90 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		2F7DDB3225B43962008F7C71 /* TournamentTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTree.swift; sourceTree = "<group>"; };
 		2F7DDB5925B43B18008F7C71 /* TournamentTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TournamentTreeTests.swift; sourceTree = "<group>"; };
@@ -73,6 +78,7 @@
 		2FC18CF12597A612002BEBD3 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		2FC8B76B2599E5170096862A /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
 		2FC8B7752599F9A50096862A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		2FD6D4D52604FB21008BE2E4 /* UIRaytracerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIRaytracerView.swift; sourceTree = "<group>"; };
 		2FE8472F25DA6CB40075958C /* FeuerShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeuerShareViewController.swift; sourceTree = "<group>"; };
 		2FF7316225EF7A2100D58844 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		2FF7316925EF856800D58844 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
@@ -172,7 +178,9 @@
 				2FF7319425EF8D8E00D58844 /* Raytracer.swift */,
 				2FF7316925EF856800D58844 /* Scene.swift */,
 				2FF7317825EF85E700D58844 /* Light.swift */,
+				2F41ED912606606D00EF9A46 /* Camera.swift */,
 				2FF7317D25EF861800D58844 /* Sphere.swift */,
+				2FD6D4D52604FB21008BE2E4 /* UIRaytracerView.swift */,
 			);
 			path = Raytracer;
 			sourceTree = "<group>";
@@ -309,11 +317,13 @@
 				2FC18CF22597A612002BEBD3 /* General.swift in Sources */,
 				2F84023F259C9666006C12B0 /* CachableResult.swift in Sources */,
 				2F2D3FC525F86698005D6DAE /* RGBColor.swift in Sources */,
+				2FD6D4D62604FB21008BE2E4 /* UIRaytracerView.swift in Sources */,
 				2F22D0D72576118F00F10E0E /* ServiceError.swift in Sources */,
 				2FFADEAA25762D4900AC906C /* Double.swift in Sources */,
 				2F27F90225F0AF6800712F53 /* UInt32.swift in Sources */,
 				2FF7317E25EF861800D58844 /* Sphere.swift in Sources */,
 				2FF7316A25EF856800D58844 /* Scene.swift in Sources */,
+				2F41ED922606606D00EF9A46 /* Camera.swift in Sources */,
 				2FF7319525EF8D8E00D58844 /* Raytracer.swift in Sources */,
 				2F871B6B25ADC7E6004BA869 /* UIView.swift in Sources */,
 				2FF7318325EF891B00D58844 /* Intersection.swift in Sources */,
@@ -342,9 +352,11 @@
 				2FF7316425EF7A2100D58844 /* Node.swift in Sources */,
 				2FF7318425EF891B00D58844 /* Intersection.swift in Sources */,
 				2FF7319625EF8D8E00D58844 /* Raytracer.swift in Sources */,
+				2FD6D4D72604FB21008BE2E4 /* UIRaytracerView.swift in Sources */,
 				2F7DDB5A25B43B18008F7C71 /* TournamentTreeTests.swift in Sources */,
 				2F2D3FC625F86698005D6DAE /* RGBColor.swift in Sources */,
 				2FF7318D25EF892D00D58844 /* Ray.swift in Sources */,
+				2F41ED932606606D00EF9A46 /* Camera.swift in Sources */,
 				2FF7317325EF859E00D58844 /* Vector3.swift in Sources */,
 				2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */,
 			);
