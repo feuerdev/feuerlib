@@ -18,12 +18,6 @@ public class Raytracer {
     ///Reflection Recursion Depth
     private var rDepth:Int = 0
     
-    ///Size of the viewport determines fov
-    private var viewportSize:Float = 1
-    
-    ///Distance of camera to viewport
-    private var projectionPlane:Float = 1
-    
     //Very small number
     private let epsilon: Float = 0.01
     
@@ -40,8 +34,8 @@ public class Raytracer {
                      width:Int,
                      height:Int,
                      rDepth:Int = 2,
-                     projectionPlane:Float = 1,
-                     viewportSize:Float = 1) -> CGImage? {
+                     updateHandler:(CGImage) -> Void = { _ in },
+                     completionHandler:(CGImage) -> Void) {
         self.width = width
         self.height = height
         self.aspect = Float(height)/Float(width)
@@ -75,9 +69,9 @@ public class Raytracer {
                     return
                 }
                 
-                let direction = canvasToViewport(x, y) * scene.cameraRotation
-                let ray = Ray(origin: scene.cameraPosition, direction: direction)
-                let color = traceRay(scene:scene, ray, tMin:self.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: self.rDepth)
+                let direction = canvasToViewport(scene, x, y) * scene.camera.matrix
+                let ray = Ray(origin: scene.camera.position, direction: direction)
+                let color = traceRay(scene:scene, ray, tMin:scene.camera.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: self.rDepth)
                 putPixel(x,y,color)
             }
         }
@@ -85,14 +79,15 @@ public class Raytracer {
 
     /// Calculates the viewport coordinate for a given canvas pixel
     /// - Parameters:
+    ///   - scene: Scene
     ///   - x: Cartesian X coordinate
     ///   - y: Cartesian Y coordinate
     /// - Returns: Vector3 of given pixel on the viewport
-    private func canvasToViewport(_ x:Int, _ y:Int) -> Vector3 {
+    private func canvasToViewport(_ scene:Scene, _ x:Int, _ y:Int) -> Vector3 {
         return Vector3(
-            Float(x)*self.viewportSize/Float(width),
-            Float(y)*(self.viewportSize * aspect)/Float(height),
-            self.projectionPlane)
+            Float(x)*scene.camera.viewportSize/Float(width),
+            Float(y)*(scene.camera.viewportSize * aspect)/Float(height),
+            scene.camera.projectionPlane)
     }
     
     ///Calculate light level for a given ray
@@ -173,7 +168,7 @@ public class Raytracer {
         let (sClosest, tClosest) = closestIntersection(scene:scene, ray, tMin: tMin, tMax: tMax)
         
         guard let sphere = sClosest else {
-            return background
+            return scene.background
         }
         
         let intersection:Vector3 = ray.origin + (ray.direction * tClosest)
