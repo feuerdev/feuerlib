@@ -6,11 +6,11 @@
 //
 public struct Sphere: Hashable {
     
-    var center:Vector3
-    var radius:Float
-    var color: RGBColor
-    var specular: Int
-    var reflectivity: Float
+    public var center:Vector3
+    public var radius:Float
+    public var color: RGBColor
+    public var specular: Int
+    public var reflectivity: Float
     
     public init(center:Vector3, radius:Float, color:RGBColor, specular:Int = -1, reflectivity:Float = 0) {
         self.center = center
