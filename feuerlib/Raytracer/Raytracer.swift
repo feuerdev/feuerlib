@@ -19,10 +19,10 @@ public class Raytracer {
     private var rDepth:Int = 0
     
     //Very small number
-    private let epsilon: Float = 0.01
+    private let epsilon: Float = 0.04
     
     //Cancel tracing
-    public var cancelled = false
+    private var cancelled = false
     
     public init() {
         //
@@ -42,11 +42,26 @@ public class Raytracer {
         self.pixels = [UInt32](repeating: scene.background.toUInt32(), count: width*height)
         self.rDepth = rDepth
         
-        self.fillBuffer(scene: scene)
+        self.fillBuffer(scene: scene, completionHandler: updateHandler)
         guard !cancelled else {
-            return nil
+            return
         }
-        return createContext()?.makeImage()
+        if let img = createContext()?.makeImage() {
+            completionHandler(img)
+        }
+        
+    }
+    
+    public func trace(_ scene:Scene, _ x:Int, _ y:Int) -> Sphere? {
+        let direction = canvasToViewport(scene, x, y) * scene.camera.matrix
+        let ray = Ray(origin: scene.camera.position, direction: direction)
+        let (sphere, _) = closestIntersection(scene: scene, ray, tMin: epsilon, tMax: .greatestFiniteMagnitude)
+        return sphere
+    }
+    
+    /// Cancells the current rendering. Will take effect on the next ray cast. It will then abort and not call the completionHandler
+    public func cancel() {
+        self.cancelled = true
     }
 
     /// Base API to set a pixel to a color. Converts from cartesian system (origin in center) to graphics system (origin top left)
@@ -62,7 +77,7 @@ public class Raytracer {
     }
 
     /// Main work function iterates through each pixel on the canvas and calculates its pixel color
-    private func fillBuffer(scene:Scene) {
+    private func fillBuffer(scene:Scene, completionHandler:(CGImage) -> Void) {
         for x in -self.width/2..<self.width/2 {
             for y in -self.height/2..<self.height/2 {
                 guard !cancelled else {
@@ -73,6 +88,10 @@ public class Raytracer {
                 let ray = Ray(origin: scene.camera.position, direction: direction)
                 let color = traceRay(scene:scene, ray, tMin:scene.camera.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: self.rDepth)
                 putPixel(x,y,color)
+                
+            }
+            if let img = createContext()?.makeImage() {
+                completionHandler(img)
             }
         }
     }
