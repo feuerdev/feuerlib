@@ -46,7 +46,7 @@ public class Raytracer {
         self.width = Int(Float(width) * qualityPercent) & ~1
         self.height = Int(Float(height) * qualityPercent) & ~1
         
-        self.aspect = Float(width)/Float(height)
+        self.aspect = Float(height)/Float(width)
         self.pixels = [UInt32](repeating: scene.background.toUInt32(), count: self.width*self.height)
         
         self.fillBuffer(scene: scene, completionHandler: updateHandler)
