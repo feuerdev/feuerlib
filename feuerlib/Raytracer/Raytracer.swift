@@ -81,7 +81,7 @@ public class Raytracer {
                 
                 let direction = canvasToViewport(scene, x, y) * scene.camera.matrix
                 let ray = Ray(origin: scene.camera.position, direction: direction)
-                let color = traceRay(scene:scene, ray, tMin:scene.camera.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: scene.rDepth)
+                let color = traceRay(scene:scene, ray, tMin:scene.camera.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: scene.reflections)
                 putPixel(x,y,color)
                 
             }

@@ -13,16 +13,17 @@ public struct Scene: Hashable {
     public var background:RGBColor
     
     ///Reflection Recursion Depth
-    public var rDepth:Int = 0
+    public var reflections:Int
     
     public init(spheres:[Sphere],
                 lights:[Light],
                 background:RGBColor = .black,
-                rDepth:Int = 3,
+                reflections:Int = 3,
                 camera:Camera = Camera()) {
         self.spheres = spheres
         self.lights = lights
         self.background = background
+        self.reflections = reflections
         self.camera = camera
     }
     
