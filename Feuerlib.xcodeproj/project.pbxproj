@@ -22,6 +22,8 @@
 		2F84023F259C9666006C12B0 /* CachableResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F84023E259C9666006C12B0 /* CachableResult.swift */; };
 		2F871B5C25AD854A004BA869 /* UIDocumentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F871B5B25AD854A004BA869 /* UIDocumentImageView.swift */; };
 		2F871B6B25ADC7E6004BA869 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F871B6A25ADC7E6004BA869 /* UIView.swift */; };
+		2F8C068D261F04FA008D5895 /* Nameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C068C261F04FA008D5895 /* Nameable.swift */; };
+		2F8C068E261F04FA008D5895 /* Nameable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8C068C261F04FA008D5895 /* Nameable.swift */; };
 		2FC18CF22597A612002BEBD3 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC18CF12597A612002BEBD3 /* General.swift */; };
 		2FC8B76C2599E5170096862A /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B76B2599E5170096862A /* UISearchBar.swift */; };
 		2FC8B7762599F9A50096862A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC8B7752599F9A50096862A /* UIViewController.swift */; };
@@ -75,6 +77,7 @@
 		2F84023E259C9666006C12B0 /* CachableResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachableResult.swift; sourceTree = "<group>"; };
 		2F871B5B25AD854A004BA869 /* UIDocumentImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDocumentImageView.swift; sourceTree = "<group>"; };
 		2F871B6A25ADC7E6004BA869 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2F8C068C261F04FA008D5895 /* Nameable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nameable.swift; sourceTree = "<group>"; };
 		2FC18CF12597A612002BEBD3 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
 		2FC8B76B2599E5170096862A /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
 		2FC8B7752599F9A50096862A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -181,6 +184,7 @@
 				2F41ED912606606D00EF9A46 /* Camera.swift */,
 				2FF7317D25EF861800D58844 /* Sphere.swift */,
 				2FD6D4D52604FB21008BE2E4 /* UIRaytracerView.swift */,
+				2F8C068C261F04FA008D5895 /* Nameable.swift */,
 			);
 			path = Raytracer;
 			sourceTree = "<group>";
@@ -323,6 +327,7 @@
 				2F27F90225F0AF6800712F53 /* UInt32.swift in Sources */,
 				2FF7317E25EF861800D58844 /* Sphere.swift in Sources */,
 				2FF7316A25EF856800D58844 /* Scene.swift in Sources */,
+				2F8C068D261F04FA008D5895 /* Nameable.swift in Sources */,
 				2F41ED922606606D00EF9A46 /* Camera.swift in Sources */,
 				2FF7319525EF8D8E00D58844 /* Raytracer.swift in Sources */,
 				2F871B6B25ADC7E6004BA869 /* UIView.swift in Sources */,
@@ -358,6 +363,7 @@
 				2FF7318D25EF892D00D58844 /* Ray.swift in Sources */,
 				2F41ED932606606D00EF9A46 /* Camera.swift in Sources */,
 				2FF7317325EF859E00D58844 /* Vector3.swift in Sources */,
+				2F8C068E261F04FA008D5895 /* Nameable.swift in Sources */,
 				2F7DDB4F25B43ADC008F7C71 /* TournamentTree.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
