@@ -89,7 +89,7 @@ public class UIRaytracerView: UIView {
             self.slowTracers.forEach { $0.cancel() }
             self.slowestTracers.forEach { $0.cancel() }
             self.fastTracer = Raytracer()
-            self.fastTracer!.draw(scene: self.scene, width: self.width/10 & ~1, height: self.height/10 & ~1) { img in
+            self.fastTracer!.draw(scene: self.scene, width: self.width, height: self.height, quality: .low) { img in
                 DispatchQueue.main.async {
                     self.ivImage.image = UIImage(cgImage: img)
                 }
@@ -98,7 +98,7 @@ public class UIRaytracerView: UIView {
                     self.slowestTracers.forEach { $0.cancel() }
                     let slowTracer = Raytracer()
                     self.slowTracers = [slowTracer]
-                    slowTracer.draw(scene: self.scene, width: self.width/4 & ~1, height: self.height/4 & ~1) { img in
+                    slowTracer.draw(scene: self.scene, width: self.width, height: self.height, quality: .medium) { img in
                         DispatchQueue.main.async {
                             self.ivImage.image = UIImage(cgImage: img)
                         }
@@ -107,7 +107,7 @@ public class UIRaytracerView: UIView {
                             self.slowestTracers.forEach { $0.cancel() }
                             let slowestTracer = Raytracer()
                             self.slowestTracers = [slowestTracer]
-                            slowestTracer.draw(scene: self.scene, width:self.width & ~1, height: self.height & ~1) { img in
+                            slowestTracer.draw(scene: self.scene, width: self.width, height: self.height, quality: .high) { img in
                                 DispatchQueue.main.async {
                                     self.ivImage.image = UIImage(cgImage: img)
                                 }

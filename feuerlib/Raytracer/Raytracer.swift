@@ -30,12 +30,24 @@ public class Raytracer {
     public func draw(scene:Scene,
                      width:Int,
                      height:Int,
+                     quality: EnumRenderQuality = .high,
                      updateHandler:(CGImage) -> Void = { _ in },
                      completionHandler:(CGImage) -> Void) {
-        self.width = width
-        self.height = height
-        self.aspect = Float(height)/Float(width)
-        self.pixels = [UInt32](repeating: scene.background.toUInt32(), count: width*height)
+        var qualityPercent:Float = 0
+        switch quality {
+        case .low:
+            qualityPercent = scene.quality.low
+        case .medium:
+            qualityPercent = scene.quality.medium
+        case .high:
+            qualityPercent = scene.quality.high
+        }
+        
+        self.width = Int(Float(width) * qualityPercent) & ~1
+        self.height = Int(Float(height) * qualityPercent) & ~1
+        
+        self.aspect = Float(width)/Float(height)
+        self.pixels = [UInt32](repeating: scene.background.toUInt32(), count: self.width*self.height)
         
         self.fillBuffer(scene: scene, completionHandler: updateHandler)
         guard !cancelled else {

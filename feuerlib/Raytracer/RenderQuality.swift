@@ -5,6 +5,10 @@
 //  Created by Jannik Feuerhahn on 09.04.21.
 //
 
+public enum EnumRenderQuality {
+    case low, medium, high
+}
+
 public struct RenderQuality: Hashable {
     public let low:Float
     public let medium:Float
