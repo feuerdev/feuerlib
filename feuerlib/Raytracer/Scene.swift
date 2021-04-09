@@ -17,17 +17,22 @@ public struct Scene: Hashable {
     
     ///Show point light as small sphere
     public var showLights:Bool
+    
+    public var quality:RenderQuality
+    
     public init(spheres:[Sphere],
                 lights:[Light],
                 background:RGBColor = .black,
                 reflections:Int = 3,
                 showLights:Bool = false,
+                quality: RenderQuality = RenderQuality(low: 0.1, medium: 0.25, high: 1),
                 camera:Camera = Camera()) {
         self.spheres = spheres
         self.lights = lights
         self.background = background
         self.showLights = showLights
         self.reflections = reflections
+        self.quality = quality
         self.camera = camera
     }
     
@@ -45,7 +50,11 @@ public struct Scene: Hashable {
             Light(type: .point, intensity: 0.9, position: .init(2, 3, -1)),
 //            Light(type: .directional, intensity: 0.7, direction: .init(1, 4, 4))
         ]
-        let scene = Scene(spheres: testSpheres, lights: testLights, background: .init(107,159,227), camera: Camera(position: .init(4.5, 2.9, -3), pitch: -0.7, roll: 0, yaw: 0.08))
+        let scene = Scene(
+            spheres: testSpheres,
+            lights: testLights,
+            background: .init(107,159,227),
+            camera: Camera(position: .init(4.5, 2.9, -3), pitch: -0.7, roll: 0, yaw: 0.08))
         return scene
     }()
 }
