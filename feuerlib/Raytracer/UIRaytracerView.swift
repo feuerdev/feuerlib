@@ -121,7 +121,6 @@ public class UIRaytracerView: UIView {
     
     
     @objc private func didTap(_ sender: UITapGestureRecognizer) {
-        print("tapped")
         let location = sender.location(in: ivImage)
         guard let tracer = fastTracer else {
             return
@@ -132,7 +131,6 @@ public class UIRaytracerView: UIView {
     }
     
     @objc private func didDoubleTap(_ sender: UITapGestureRecognizer) {
-        print("double tapped")
         if zoomed {
             scene.camera.viewportSize = 1
         } else {
