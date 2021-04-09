@@ -9,15 +9,19 @@ public enum LightType {
 }
 
 public struct Light: Hashable {
-    let type: LightType
-    let intensity: Float
-    var position: Vector3 = Vector3(0,0,0)
-    var direction: Vector3 = Vector3(0,0,0)
+    private static var index: Int = 1
+    public let name: String
+    public let type: LightType
+    public let intensity: Float
+    public var position: Vector3 = Vector3(0,0,0)
+    public var direction: Vector3 = Vector3(0,0,0)
     
     public init(type: LightType, intensity:Float, position:Vector3 = Vector3(0,0,0), direction:Vector3 = Vector3(0,0,0)) {
+        self.name = "Light \(Light.index)"
         self.type = type
         self.intensity = intensity
         self.position = position
         self.direction = direction
+        Light.index += 1
     }
 }
