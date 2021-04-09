@@ -9,11 +9,16 @@ public struct Scene: Hashable {
     public var lights:[Light]
     public var camera:Camera
     
+    ///Background color
     public var background:RGBColor
+    
+    ///Reflection Recursion Depth
+    public var rDepth:Int = 0
     
     public init(spheres:[Sphere],
                 lights:[Light],
                 background:RGBColor = .black,
+                rDepth:Int = 3,
                 camera:Camera = Camera()) {
         self.spheres = spheres
         self.lights = lights
@@ -21,6 +26,7 @@ public struct Scene: Hashable {
         self.camera = camera
     }
     
+    ///Manually defined Scene for testing purposes
     public static let testScene:Scene = {
         let testSpheres = [
             Sphere(center:Vector3(0.3, 0.5, 0), radius: 0.5, color: .black, specular: 1000, reflectivity: 0.2),

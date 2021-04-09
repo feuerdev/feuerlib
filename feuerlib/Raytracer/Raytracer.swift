@@ -15,9 +15,6 @@ public class Raytracer {
     ///Pixel buffer
     private var pixels: [UInt32] = []
     
-    ///Reflection Recursion Depth
-    private var rDepth:Int = 0
-    
     //Very small number
     private let epsilon: Float = 0.04
     
@@ -33,14 +30,12 @@ public class Raytracer {
     public func draw(scene:Scene,
                      width:Int,
                      height:Int,
-                     rDepth:Int = 2,
                      updateHandler:(CGImage) -> Void = { _ in },
                      completionHandler:(CGImage) -> Void) {
         self.width = width
         self.height = height
         self.aspect = Float(height)/Float(width)
         self.pixels = [UInt32](repeating: scene.background.toUInt32(), count: width*height)
-        self.rDepth = rDepth
         
         self.fillBuffer(scene: scene, completionHandler: updateHandler)
         guard !cancelled else {
@@ -86,7 +81,7 @@ public class Raytracer {
                 
                 let direction = canvasToViewport(scene, x, y) * scene.camera.matrix
                 let ray = Ray(origin: scene.camera.position, direction: direction)
-                let color = traceRay(scene:scene, ray, tMin:scene.camera.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: self.rDepth)
+                let color = traceRay(scene:scene, ray, tMin:scene.camera.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: scene.rDepth)
                 putPixel(x,y,color)
                 
             }
