@@ -15,14 +15,18 @@ public struct Scene: Hashable {
     ///Reflection Recursion Depth
     public var reflections:Int
     
+    ///Show point light as small sphere
+    public var showLights:Bool
     public init(spheres:[Sphere],
                 lights:[Light],
                 background:RGBColor = .black,
                 reflections:Int = 3,
+                showLights:Bool = false,
                 camera:Camera = Camera()) {
         self.spheres = spheres
         self.lights = lights
         self.background = background
+        self.showLights = showLights
         self.reflections = reflections
         self.camera = camera
     }
