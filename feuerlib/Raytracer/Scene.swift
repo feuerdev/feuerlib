@@ -6,7 +6,11 @@
 //
 public struct Scene: Hashable {
     public var spheres:[Sphere]
-    public var lights:[Light]
+    public var lights:[Light] {
+        didSet {
+            updateLightSpheres()
+        }
+    }
     public var camera:Camera
     
     ///Background color
@@ -16,7 +20,13 @@ public struct Scene: Hashable {
     public var reflections:Int
     
     ///Show point light as small sphere
-    public var showLights:Bool
+    public var showLights:Bool {
+        didSet {
+            updateLightSpheres()
+        }
+    }
+    
+    internal var lightSpheres:[Sphere] = []
     
     public var quality:RenderQuality
     
@@ -34,6 +44,28 @@ public struct Scene: Hashable {
         self.reflections = reflections
         self.quality = quality
         self.camera = camera
+        updateLightSpheres()
+    }
+    
+    private mutating func updateLightSpheres() {
+        self.lightSpheres = []
+        if showLights {
+            for light in lights {
+                if light.type == .point {
+                    lightSpheres.append(.init(center: .init(light.position.x, light.position.y+0.15, light.position.z), radius: 0.1, color: .yellow))
+                } else if light.type == .directional {
+                    
+                    for sphere in spheres {
+                        var pos = sphere.center
+                        for _ in 1...5 {
+                            pos = pos + (light.direction.normalize() * 0.5)
+                            lightSpheres.append(.init(center: pos, radius: 0.04, color: .yellow))
+                        }
+                    }
+                    
+                }
+            }
+        }
     }
     
     ///Manually defined Scene for testing purposes

@@ -165,7 +165,7 @@ public class Raytracer {
     private func closestIntersection(scene:Scene, _ ray:Ray, tMin:Float, tMax:Float) -> (Sphere?, Float) {
         var tClosest = Float.greatestFiniteMagnitude
         var sClosest:Sphere? = nil
-        for sphere in scene.spheres {
+        for sphere in scene.spheres + scene.lightSpheres {
             let (t1, t2) = intersects(ray: ray, sphere: sphere)
             if t1 < tMax && t1 > tMin && t1 < tClosest {
                 tClosest = t1
