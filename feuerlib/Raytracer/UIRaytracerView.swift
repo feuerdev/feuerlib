@@ -6,6 +6,11 @@
 //
 import UIKit
 
+public protocol UIRaytracerSceneDelegate {
+    func getScene() -> Scene
+    func setScene(_ scene:Scene) -> Void
+}
+
 ///Raytracer canvas view with gestures to change camera and quality streaming
 public class UIRaytracerView: UIView {
     
@@ -42,7 +47,26 @@ public class UIRaytracerView: UIView {
     private var zoomed = false
     
     ///Scene to be drawn
-    public var scene:Scene = Scene.testScene
+    private var scene:Scene {
+        get {
+            guard let delegate = sceneDelegate else {
+                return debugScene
+            }
+            return delegate.getScene()
+        }
+        
+        set {
+            guard let delegate = sceneDelegate else {
+                debugScene = newValue
+                return
+            }
+            delegate.setScene(newValue)
+        }
+    }
+    
+    private var debugScene = Scene.testScene
+    
+    public var sceneDelegate:UIRaytracerSceneDelegate?
     
     /// Constructor
     /// - Parameter scene: `Scene` or default test scene
@@ -84,12 +108,12 @@ public class UIRaytracerView: UIView {
     }
     
     /// Starts the draw queue
-    private func redraw() {
+    private func draw(_ scene:Scene) {
         fastQueue.async {
             self.slowTracers.forEach { $0.cancel() }
             self.slowestTracers.forEach { $0.cancel() }
             self.fastTracer = Raytracer()
-            self.fastTracer!.draw(scene: self.scene, width: self.width, height: self.height, quality: .low) { img in
+            self.fastTracer!.draw(scene: scene, width: self.width, height: self.height, quality: .low) { img in
                 DispatchQueue.main.async {
                     self.ivImage.image = UIImage(cgImage: img)
                 }
@@ -98,7 +122,7 @@ public class UIRaytracerView: UIView {
                     self.slowestTracers.forEach { $0.cancel() }
                     let slowTracer = Raytracer()
                     self.slowTracers = [slowTracer]
-                    slowTracer.draw(scene: self.scene, width: self.width, height: self.height, quality: .medium) { img in
+                    slowTracer.draw(scene: scene, width: self.width, height: self.height, quality: .medium) { img in
                         DispatchQueue.main.async {
                             self.ivImage.image = UIImage(cgImage: img)
                         }
@@ -107,7 +131,7 @@ public class UIRaytracerView: UIView {
                             self.slowestTracers.forEach { $0.cancel() }
                             let slowestTracer = Raytracer()
                             self.slowestTracers = [slowestTracer]
-                            slowestTracer.draw(scene: self.scene, width: self.width, height: self.height, quality: .high) { img in
+                            slowestTracer.draw(scene: scene, width: self.width, height: self.height, quality: .high) { img in
                                 DispatchQueue.main.async {
                                     self.ivImage.image = UIImage(cgImage: img)
                                 }
@@ -121,13 +145,13 @@ public class UIRaytracerView: UIView {
     
     
     @objc private func didTap(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: ivImage)
-        guard let tracer = fastTracer else {
-            return
-        }
-        let shape = tracer.trace(scene, Int(location.x/10), Int(location.y/10))
-        print(shape?.color)
-        redraw()
+//        let location = sender.location(in: ivImage)
+//        guard let tracer = fastTracer else {
+//            return
+//        }
+//        let shape = tracer.trace(scene, Int(location.x/10), Int(location.y/10))
+//        print(shape?.color)
+//        redraw()
     }
     
     @objc private func didDoubleTap(_ sender: UITapGestureRecognizer) {
@@ -138,18 +162,18 @@ public class UIRaytracerView: UIView {
         }
         zoomed = !zoomed
         
-        redraw()
+        draw(scene)
     }
     
     @objc private func didRotate(_ sender: UIRotationGestureRecognizer) {
         self.scene.camera.yaw += Float(sender.velocity/20)
-        redraw()
+        draw(scene)
     }
     
     @objc private func didPinch(_ sender: UIPinchGestureRecognizer) {
         let vector = .init(0, 0, Float(sender.velocity)) * scene.camera.matrix
         scene.camera.position = scene.camera.position + vector
-        redraw()
+        draw(scene)
     }
     
     @objc private func didPan(_ sender: UIPanGestureRecognizer) {
@@ -163,7 +187,7 @@ public class UIRaytracerView: UIView {
             let vector = .init(Float(x/1000), Float(y/1000), 0) * scene.camera.matrix
             scene.camera.position = scene.camera.position + vector
         }
-        redraw()
+        draw(scene)
     }
     
     public override func layoutSubviews() {
@@ -174,7 +198,7 @@ public class UIRaytracerView: UIView {
             return
         }
         
-        redraw()
+        draw(scene)
     }
 }
 
