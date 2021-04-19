@@ -35,7 +35,7 @@ public struct Scene: Hashable {
                 background:RGBColor = .black,
                 reflections:Int = 3,
                 showLights:Bool = false,
-                quality: RenderQuality = RenderQuality(low: 0.1, medium: 0.25, high: 1),
+                quality: RenderQuality = RenderQuality(low: 0.05, medium: 0.2, high: 1),
                 camera:Camera = Camera()) {
         self.spheres = spheres
         self.lights = lights
