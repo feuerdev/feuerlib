@@ -10,6 +10,7 @@ public enum LightType {
 
 public struct Light: Hashable {
     private static var index: Int = 1
+    public let id = index
     public let name: String
     public let type: LightType
     public let intensity: Float

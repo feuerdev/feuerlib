@@ -8,6 +8,7 @@ public struct Sphere: Hashable {
     
     private static var index = 1
     
+    public var id:Int
     public var name: String
     public var center:Vector3
     public var radius:Float
@@ -16,6 +17,7 @@ public struct Sphere: Hashable {
     public var reflectivity: Float
     
     public init(center:Vector3, radius:Float, color:RGBColor, specular:Int = -1, reflectivity:Float = 0) {
+        self.id = Sphere.index
         self.name = "Sphere \(Sphere.index)"
         self.center = center
         self.radius = radius
