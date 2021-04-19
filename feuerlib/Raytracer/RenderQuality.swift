@@ -10,9 +10,9 @@ public enum EnumRenderQuality {
 }
 
 public struct RenderQuality: Hashable {
-    public let low:Float
-    public let medium:Float
-    public let high:Float
+    public var low:Float
+    public var medium:Float
+    public var high:Float
     
     public init(low:Float, medium:Float, high:Float) {
         self.low = low

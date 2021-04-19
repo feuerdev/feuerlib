@@ -8,9 +8,9 @@ import UIKit
 
 ///RGB color representation without alpha component
 public struct RGBColor: Hashable {
-    public let red:Int
-    public let green:Int
-    public let blue:Int
+    public var red:Int
+    public var green:Int
+    public var blue:Int
     
     public init(_ red:Int,_ green:Int,_ blue:Int) {
         self.red = max(min(red, 255), 0)

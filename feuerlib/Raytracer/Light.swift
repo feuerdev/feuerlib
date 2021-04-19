@@ -12,8 +12,8 @@ public struct Light: Hashable {
     private static var index: Int = 1
     public let id = index
     public let name: String
-    public let type: LightType
-    public let intensity: Float
+    public var type: LightType
+    public var intensity: Float
     public var position: Vector3 = Vector3(0,0,0)
     public var direction: Vector3 = Vector3(0,0,0)
     
