@@ -4,8 +4,8 @@
 //
 //  Created by Jannik Feuerhahn on 03.03.21.
 //
-public enum LightType {
-    case point, ambient, directional
+public enum LightType:Int,CaseIterable {
+    case ambient, point, directional
 }
 
 public struct Light: Hashable {
