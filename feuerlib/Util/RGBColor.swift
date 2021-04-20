@@ -12,6 +12,13 @@ public struct RGBColor: Hashable {
     public var green:Int
     public var blue:Int
     
+    ///"Lightness" per ITU-R BT.709
+    public var luma:Int {
+        get {
+            return Int(0.2126 * Float(red) + 0.7152 * Float(green) + 0.0722 * Float(blue))
+        }
+    }
+    
     public init(_ red:Int,_ green:Int,_ blue:Int) {
         self.red = max(min(red, 255), 0)
         self.green = max(min(green, 255), 0)
