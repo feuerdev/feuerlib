@@ -9,9 +9,6 @@ public class Raytracer {
     ///Height of Canvas
     private var height:Int = 0
     
-    //Aspect Ratio
-    private var aspect:Float = 0
-    
     ///Pixel buffer
     private var pixels: [UInt32] = []
     
@@ -46,7 +43,6 @@ public class Raytracer {
         self.width = Int(Float(width) * qualityPercent) & ~1
         self.height = Int(Float(height) * qualityPercent) & ~1
         
-        self.aspect = Float(height)/Float(width)
         self.pixels = [UInt32](repeating: scene.background.toUInt32(), count: self.width*self.height)
         
         self.fillBuffer(scene: scene, completionHandler: updateHandler)
@@ -91,7 +87,7 @@ public class Raytracer {
                     return
                 }
                 
-                let direction = canvasToViewport(scene, x, y) * scene.camera.matrix
+                let direction = canvasToViewport(scene, width: self.width, height: self.height, x, y) * scene.camera.matrix
                 let ray = Ray(origin: scene.camera.position, direction: direction)
                 let color = traceRay(scene:scene, ray, tMin:scene.camera.projectionPlane, tMax:Float.greatestFiniteMagnitude, rDepth: scene.reflections)
                 putPixel(x,y,color)
@@ -109,7 +105,8 @@ public class Raytracer {
     ///   - x: Cartesian X coordinate
     ///   - y: Cartesian Y coordinate
     /// - Returns: Vector3 of given pixel on the viewport
-    private func canvasToViewport(_ scene:Scene, _ x:Int, _ y:Int) -> Vector3 {
+    private func canvasToViewport(_ scene:Scene, width:Int, height:Int, _ x:Int, _ y:Int) -> Vector3 {
+        let aspect = Float(height)/Float(width)
         return Vector3(
             Float(x)*scene.camera.viewportSize/Float(width),
             Float(y)*(scene.camera.viewportSize * aspect)/Float(height),
