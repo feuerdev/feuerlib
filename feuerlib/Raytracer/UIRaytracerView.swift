@@ -171,7 +171,7 @@ public class UIRaytracerView: UIView {
     }
     
     @objc private func didPinch(_ sender: UIPinchGestureRecognizer) {
-        let vector = .init(0, 0, Float(sender.velocity)) * scene.camera.matrix
+        let vector = .init(0, 0, (Float(sender.velocity)/15)) * scene.camera.matrix
         scene.camera.position = scene.camera.position + vector
         draw(scene)
     }
