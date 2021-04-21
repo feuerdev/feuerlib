@@ -12,7 +12,7 @@ public protocol UIRaytracerViewSceneDelegate {
 }
 
 public protocol UIRaytracerViewInteractionDelegate {
-    func didTapSphere(_ sphere:Sphere)
+    func didTapSphere(_ sphere:Sphere?)
 }
 
 ///Raytracer canvas view with gestures to change camera and quality streaming
@@ -151,9 +151,8 @@ public class UIRaytracerView: UIView {
     @objc private func didTap(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: ivImage)
         let tracer = Raytracer()
-        if let shape = tracer.hitTest(scene, width: Int(ivImage.frame.width), height:Int(ivImage.frame.height), Int(location.x), Int(location.y)) {
-            self.interactionDelegate?.didTapSphere(shape)
-        }
+        let shape = tracer.hitTest(scene, width: self.width, height:self.height, Int(location.x), Int(location.y))
+        self.interactionDelegate?.didTapSphere(shape)
     }
     
     @objc private func didDoubleTap(_ sender: UITapGestureRecognizer) {
