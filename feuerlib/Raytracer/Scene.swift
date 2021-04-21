@@ -87,6 +87,7 @@ public struct Scene: Hashable {
             background: .init(107,159,227),
             reflections: 3,
             showLights: false,
+            quality: .init(low: 0.05, medium: 0.5, high: 1),
             camera: Camera(position: .init(4.5, 2.9, -3), pitch: -0.8, roll: 0.34, yaw: 0.08))
         return scene
     }()
