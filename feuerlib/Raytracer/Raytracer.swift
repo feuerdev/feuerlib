@@ -57,15 +57,12 @@ public class Raytracer {
     
     public func hitTest(_ scene:Scene, width:Int, height:Int, _ x:Int, _ y:Int) -> Sphere? {
         let sX = x-(width/2)
-        let sY = y-(height/2)
+        let sY = (height/2)-y
         //sX/sY should be 0/0 if you trace to the middle of the screen
-        let direction = canvasToViewport(scene, width: width, height: height, sX, sY) * scene.camera.matrix
+        let vp = canvasToViewport(scene, width: width, height: height, sX, sY)
+        let direction = vp * scene.camera.matrix
         let ray = Ray(origin: scene.camera.position, direction: direction)
         let (sphere, _) = closestIntersection(scene: scene, ray, tMin: epsilon, tMax: .greatestFiniteMagnitude)
-        print("Clicked at:", x,y)
-        print("Calculated to:", sX, sY)
-        print("Size:", width, height)
-        print("Hit: ", sphere?.name)
         return sphere
     }
     
