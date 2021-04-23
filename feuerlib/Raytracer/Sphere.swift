@@ -28,7 +28,7 @@ public struct Sphere: Hashable {
     }
     
     public static func createRandom() -> Sphere {
-        let sphere = Sphere(center: .init(Float.random(in: -10...10), Float.random(in: 0...10), Float.random(in: -10...10)), radius: Float.random(in: 1...5), color: .init(Int.random(in: 0...255), Int.random(in: 0...255), Int.random(in: 0...255)), specular: Int.random(in: -1...500), reflectivity: Float.random(in: 0...1))
+        let sphere = Sphere(center: .init(Float.random(in: -5...5), Float.random(in: 0...5), Float.random(in: -5...5)), radius: Float.random(in: 0.2...2.2), color: .init(Int.random(in: 0...255), Int.random(in: 0...255), Int.random(in: 0...255)), specular: Int.random(in: -1...500), reflectivity: Float.random(in: 0...1))
         return sphere
     }
 }
