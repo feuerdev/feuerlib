@@ -25,6 +25,12 @@ public class UIRaytracerView: UIView {
         return iv
     }()
     
+    private lazy var aiLoading:UIActivityIndicatorView = {
+        let ai = UIActivityIndicatorView()
+        ai.translatesAutoresizingMaskIntoConstraints = false
+        return ai
+    }()
+    
     ///Fastest dispatch queue for quick feedback
     private let fastQueue = DispatchQueue(label: "fast", qos: .userInteractive)
     
@@ -89,6 +95,7 @@ public class UIRaytracerView: UIView {
     
     private func commonInit() {
         addSubview(ivImage)
+        addSubview(aiLoading)
         isUserInteractionEnabled = true
         
         let grPan = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
@@ -109,11 +116,14 @@ public class UIRaytracerView: UIView {
             ivImage.trailingAnchor.constraint(equalTo: trailingAnchor),
             ivImage.topAnchor.constraint(equalTo: topAnchor),
             ivImage.bottomAnchor.constraint(equalTo: bottomAnchor),
+            ivImage.bottomAnchor.constraint(equalTo: aiLoading.bottomAnchor, constant: 8),
+            ivImage.trailingAnchor.constraint(equalTo: aiLoading.trailingAnchor, constant: 8)
         ])
     }
     
     /// Starts the draw queue
     private func draw(_ scene:Scene) {
+        aiLoading.startAnimating()
         fastQueue.async {
             self.slowTracers.forEach { $0.cancel() }
             self.slowestTracers.forEach { $0.cancel() }
@@ -139,6 +149,7 @@ public class UIRaytracerView: UIView {
                             slowestTracer.draw(scene: scene, width: self.width, height: self.height, quality: .high) { img in
                                 DispatchQueue.main.async {
                                     self.ivImage.image = UIImage(cgImage: img)
+                                    self.aiLoading.stopAnimating()
                                 }
                             }
                         }
