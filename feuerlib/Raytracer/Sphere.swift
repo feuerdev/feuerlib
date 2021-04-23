@@ -26,4 +26,9 @@ public struct Sphere: Hashable {
         self.reflectivity = reflectivity
         Sphere.index += 1
     }
+    
+    public static func createRandom() -> Sphere {
+        let sphere = Sphere(center: .init(Float.random(in: -10...10), Float.random(in: 0...10), Float.random(in: -10...10)), radius: Float.random(in: 1...5), color: .init(Int.random(in: 0...255), Int.random(in: 0...255), Int.random(in: 0...255)), specular: Int.random(in: -1...500), reflectivity: Float.random(in: 0...1))
+        return sphere
+    }
 }
