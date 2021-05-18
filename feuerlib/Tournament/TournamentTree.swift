@@ -11,8 +11,8 @@ import Foundation
 public class TournamentTree<T> {
     
     ///Root node of the tree
-    var finals: Node<T>
-    var competitors: [T]
+    public var finals: Node<T>
+    public var competitors: [T]
     
     public init(_ competitors:[T]) {
         self.competitors = competitors

@@ -9,12 +9,15 @@ import Foundation
 
 ///A Node represents one match, with two optional competitors and one optinal winner
 public class Node<T> {
-    var winner: T?
-    var left: Node?
-    var right: Node?
+    public var winner: T?
+    public var left: Node?
+    public var right: Node?
     
-    convenience init(_ value:T) {
-        self.init()
+    init() {
+        //
+    }
+    
+    init(_ value:T) {
         self.winner = value
     }
     
