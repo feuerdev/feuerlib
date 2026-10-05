@@ -70,7 +70,7 @@ class TournamentTreeTests: XCTestCase {
         sut2.finals.right?.left = nil
         sut2.finals.right?.winner = nil
         sut2.resolveByes(sut2.finals)
-        XCTAssertEqual(sut.finals.right?.winner, 1)
+        XCTAssertEqual(sut2.finals.right?.winner, 1)
     }
     
     func testDepthFirstTraversal() {
